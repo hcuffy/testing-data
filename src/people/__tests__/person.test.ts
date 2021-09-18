@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 describe('Person full Name', () => {
     jest.resetAllMocks();
     test('returns a random full name', function() {
@@ -217,5 +218,35 @@ describe('Person first and last name', () => {
         const defaultLastName = getLastName();
 
         expect(defaultLastName).toBe('tester');
+    });
+});
+
+describe('Number Safeguard', () => {
+    test('returns 50 is the argument is greater than 50', function() {
+        const safeguardNumber = require('../').safeguardNumber;
+        const number = safeguardNumber(51);
+
+        expect(number).toEqual(50);
+    });
+
+    test('returns 3 if no number is provided', function() {
+        const safeguardNumber = require('../').safeguardNumber;
+        const number = safeguardNumber();
+
+        expect(number).toEqual(3);
+    });
+
+    test('returns the absolute value of a negative argument', function() {
+        const safeguardNumber = require('../').safeguardNumber;
+        const number = safeguardNumber(-5);
+
+        expect(number).toEqual(5);
+    });
+
+    test('returns floor value of a float argument', function() {
+        const safeguardNumber = require('../').safeguardNumber;
+        const number = safeguardNumber(7.6505);
+
+        expect(number).toEqual(7);
     });
 });

@@ -39,7 +39,7 @@ export function createRandomEmail() : string {
     return _.join([firstName, lastName, '@', 'test.com'], '');
 }
 
-function safeguardNumber(quantity){
+export function safeguardNumber(quantity){
     const numberAsInt = Math.abs(_.floor(quantity)) || 3;
 
     return numberAsInt > 50 ? 50 : numberAsInt;

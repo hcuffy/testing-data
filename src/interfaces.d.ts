@@ -1,6 +1,7 @@
 interface VehicleBrands {
-    name: string,
-    models: string[]
+    brand: string,
+    models: string[],
+    vinBase: string
 }
 
 interface Person {
@@ -8,4 +9,11 @@ interface Person {
     lastName: string
     fullName: string
     email: string
+}
+
+interface Vehicle {
+    brand: string,
+    model: string,
+    vin: string,
+    engine: string
 }
