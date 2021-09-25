@@ -24,12 +24,13 @@ export function getFullName(gender = '') : string {
     return `${firstName} ${lastName}`;
 }
 
-export function createEmail(firstName:string, lastName:string, domain = 'test.com') : string {
+export function createEmail(firstName:string, lastName:string, domain) : string {
+    const currentDomain = domain ? domain : 'test.com'
     if (!firstName && !lastName) {
         return 'noNameProvided@test.com';
     }
 
-    return _.join([firstName, lastName, '@', domain], '');
+    return _.join([firstName, lastName, '@', currentDomain], '');
 }
 
 export function createRandomEmail() : string {
