@@ -24,20 +24,20 @@ export function getFullName(gender = '') : string {
     return `${firstName} ${lastName}`;
 }
 
-export function createEmail(firstName:string, lastName:string, domain) : string {
-    const currentDomain = domain ? domain : 'test.com'
+export function createEmail(firstName:string, lastName:string, customText ='', domain) : string {
+    const currentDomain = domain ? domain : 'test.com';
     if (!firstName && !lastName) {
         return 'noNameProvided@test.com';
     }
 
-    return _.join([firstName, lastName, '@', currentDomain], '');
+    return _.join([firstName, lastName, customText, '@', currentDomain], '');
 }
 
 export function createRandomEmail() : string {
     const firstName = getFirstName();
     const lastName = getLastName();
 
-    return _.join([firstName, lastName, '@', 'test.com'], '');
+    return createEmail(firstName, lastName, '', 'test.com');
 }
 
 export function safeguardNumber(quantity){
@@ -46,14 +46,15 @@ export function safeguardNumber(quantity){
     return numberAsInt > 50 ? 50 : numberAsInt;
 }
 
-export function getMultipleEmails(quantity = 1) : string[] {
+export function getMultipleEmails(quantity = 1, domain) : string[] {
     const arrayOfEmails:string[] = [];
     const firstName = getFirstName();
     const lastName = getLastName();
     const revisedQuantity = safeguardNumber(quantity);
 
     for (let i = 0; i < revisedQuantity; i++) {
-        const email = _.join([firstName, lastName, i, '@', 'test.com'], '');
+        const email = createEmail(firstName, lastName, i.toString(), domain);
+
         arrayOfEmails.push(email);
     }
 
@@ -64,7 +65,7 @@ export function getPerson(gender = '', domain = '') : Person {
     const firstName = getFirstName(gender);
     const lastName = getLastName();
     const fullName = `${firstName} ${lastName}`;
-    const email = createEmail(firstName, lastName, domain);
+    const email = createEmail(firstName, lastName, '', domain);
 
     return { firstName, lastName, fullName, email };
 }
