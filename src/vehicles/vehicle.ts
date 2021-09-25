@@ -5,7 +5,7 @@ import { safeguardNumber } from '../people';
 function generateVin(base) : string {
     const suffix = _.random(100000, 999999);
 
-    return _.join([base, suffix]);
+    return _.join([base, suffix],'');
 }
 
 function getEngineType() : string {
