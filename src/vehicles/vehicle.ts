@@ -5,11 +5,11 @@ import { safeguardNumber } from '../people';
 function generateVin(base) : string {
     const suffix = _.random(100000, 999999);
 
-    return _.join([base, suffix],'');
+    return _.join([base, suffix], '');
 }
 
 function getEngineType() : string {
-    return _.sample(['petrol', 'diesel', 'autogas', 'naturalgas']) || 'petrol';
+    return _.sample(['petrol', 'diesel', 'autogas', 'naturalgas', 'hybrid']) || 'petrol';
 }
 
 function getRandomBrand() : VehicleBrands {
