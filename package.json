@@ -1,5 +1,5 @@
 {
-  "name": "Testing-data",
+  "name": "testing-data",
   "version": "1.0.0",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -8,9 +8,6 @@
   "private": false,
   "scripts": {
     "build": "tsc",
-    "files": [
-      "/lib"
-    ],
     "fix": "yarn eslint src --fix",
     "lint": "eslint src/**/*.ts",
     "prepare": "yarn build",
@@ -42,5 +39,6 @@
   },
   "dependencies": {
     "lodash": "^4.17.21"
-  }
+  },
+  "files": ["/lib"]
 }
