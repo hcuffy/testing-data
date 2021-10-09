@@ -4,8 +4,14 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "author": "Henry Cuffy",
+  "description": "A library to randomly generate vehicle and user data",
+  "homepage": "https://github.com/hcuffy/testing-data",
   "license": "MIT",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hcuffy/testing-data"
+  },
   "scripts": {
     "build": "tsc",
     "fix": "yarn eslint src --fix",
@@ -42,5 +48,17 @@
   },
   "files": [
     "/lib"
+  ],
+  "keywords": [
+    "typescript",
+    "javascript",
+    "testing",
+    "vin",
+    "vin-generator",
+    "testing",
+    "testing-data",
+    "user",
+    "people",
+    "user-data"
   ]
 }
