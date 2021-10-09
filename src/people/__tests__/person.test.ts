@@ -64,7 +64,7 @@ describe('Person complete data', () => {
 
     test('returns the appropriate email when all data is provided', function() {
         const createEmail = require('../').createEmail;
-        const email = createEmail('theFirstName', 'theLastName', '','theDomain.com');
+        const email = createEmail('theFirstName', 'theLastName', '', 'theDomain.com');
 
         expect(email).toEqual('theFirstNametheLastName@theDomain.com');
     });

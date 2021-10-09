@@ -15,5 +15,6 @@ interface Vehicle {
     brand: string,
     model: string,
     vin: string,
-    engine: string
+    engine: string,
+    numberPlate: string
 }

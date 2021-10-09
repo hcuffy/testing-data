@@ -1,20 +1,7 @@
 import _ from 'lodash';
 import { vehicleBrands } from './seeds';
 import { safeguardNumber } from '../people';
-
-function generateVin(base) : string {
-    const suffix = _.random(100000, 999999);
-
-    return _.join([base, suffix], '');
-}
-
-function getEngineType() : string {
-    return _.sample(['petrol', 'diesel', 'autogas', 'naturalgas', 'hybrid']) || 'petrol';
-}
-
-function getRandomBrand() : VehicleBrands {
-    return vehicleBrands[_.random(vehicleBrands.length - 1)];
-}
+import { generateVin, getEngineType, getRandomBrand, getRandomNumberPlate } from './helpers';
 
 export function getRandomVin() : string {
     const vehicleObject = getRandomBrand();
@@ -28,8 +15,11 @@ export function getVehicle(brand = '') : Vehicle {
     const model = vehicleModels[_.random(vehicleModels.length - 1)];
     const vin = generateVin(vehicleObject.vinBase);
     const engine = getEngineType();
+    const numberPlate = getRandomNumberPlate();
 
-    return { brand: vehicleObject.brand, model, vin, engine };
+    return {
+        brand: vehicleObject.brand, model, vin, engine, numberPlate
+    };
 }
 
 export function getVehicles(quantity = 1) : Vehicle[] {
