@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+import _ from 'lodash';
+
 describe('Person full Name', () => {
     jest.resetAllMocks();
     test('returns a random full name', function() {
@@ -40,7 +42,12 @@ describe('Person complete data', () => {
         expect(person.fullName).toStrictEqual(expect.any(String));
         expect(person.email).toStrictEqual(expect.any(String));
     });
-
+    test('person object returns five props', function() {
+        const getPerson = require('../').getPerson;
+        const person = getPerson();
+        const objectSize =  _.size(person)
+        expect(objectSize).toEqual(4);
+    });
     test('returns a generic email when no data is provided', function() {
         const createEmail = require('../').createEmail;
         const email = createEmail();

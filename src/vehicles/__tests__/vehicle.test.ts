@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+import _ from 'lodash';
+
 describe('Vehicle Data', () => {
     test('return a random engine type', function() {
         const getRandomVin = require('../').getRandomVin;
         const vin = getRandomVin();
 
+        expect(vin.length).toEqual(17);
         expect(vin).not.toBeFalsy();
         expect.any(String);
     });
@@ -35,6 +38,15 @@ describe('Vehicle Data', () => {
         expect(vehicleObject.models).toContain(vehicle.model);
         expect(vehicle.vin).toStrictEqual(expect.any(String));
         expect(vehicle.engine).toStrictEqual(expect.any(String));
+        expect(vehicle.numberPlate).toStrictEqual(expect.any(String));
+    });
+
+    test('vehicle object returns five props', function() {
+        const getVehicle = require('../').getVehicle;
+        const vehicle = getVehicle();
+        const objectSize =  _.size(vehicle)
+        expect(objectSize).toEqual(5);
+        expect(vehicle.numberPlate).toStrictEqual(expect.any(String));
     });
 });
 
