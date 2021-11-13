@@ -15,7 +15,7 @@ Using yarn:
 ```
 import { getVehicles, getPeople } from 'testing-data';
 
-const vehicles = getVehicles()
+const vehicles = getVehicles({})
 
 /* getVehicles will return an array of vehicle objects. See example below.
   [
@@ -23,12 +23,13 @@ const vehicles = getVehicles()
         brand: 'Jaguar',
         model: 'F-TYPE',
         vin: 'SAJWA0HP2DM522159',
-        engine: 'autogas'
+        engine: 'autogas',
+        numberPlate: 'XE5607'
       }
     ]
 */
 
-const people = getPeople()
+const people = getPeople({})
 
 /* getPeople will return an array of person object. See example below.
   [
@@ -45,26 +46,26 @@ const people = getPeople()
 ## Available Functions
 
 ### People:
-`getFirstName`       : arguments::`gender` 'male'|'female'|NONE  
+`getFirstName({gender: 'male'})`: arguments::`gender` 'male'|'female'|NONE  
 
-`getLastName`        : arguments:: NONE   
+`getLastName({})` : arguments:: NONE   
 
-`getFullName`        : arguments::`gender` 'male'|'female'|NONE   
+`getFullName({gender: 'male'})` : arguments::`gender` 'male'|'female'|NONE   
 
-`createEmail`        : arguments:: `firstName` optional, `lastName` optional, `domain` optional  
+`createEmail({firstName: 'male', lastName: 'test.com', domain: 'test.com' })` : arguments:: `firstName` optional, `lastName` optional, `domain` optional  
 
-`createRandomEmail`  : arguments:: NONE
+`createRandomEmail({})` : arguments:: NONE
 
-`getMultipleEmails`  : arguments:: `quantity` Number `domain` optional
+`getMultipleEmails({quantity: 1, domain: 'test.com'})` : arguments:: `quantity` Number `domain` optional
 
-`getPerson`          : arguments:: `gender` optional, `domain` optional    
+`getPerson({gender: 'male', domain: 'test.com'})` : arguments:: `gender` 'male'|'female'|NONE, `domain` optional    
 
-`getPeople`          : arguments:: `quantity` Number 
+`getPeople({quantity: 1})` : arguments:: `quantity` Number 
 
 ### Vehicles:
 
-`getRandomVin` : arguments:: NONE   
+`getRandomVin({})` : arguments:: NONE   
 
-`getVehicle`   : arguments:: `brand` optional
+`getVehicle({brand: 'Honda'})` : arguments:: `brand` optional
 
-`getVehicles`  : arguments:: `quantity` Number 
+`getVehicles({quantity: 1})` : arguments:: `quantity` Number 

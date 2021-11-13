@@ -6,7 +6,7 @@ import { generateVin, getEngineType, getRandomBrand, getRandomNumberPlate } from
 export function getRandomVin() : string {
     const vehicleObject = getRandomBrand();
 
-    return generateVin(vehicleObject?.vinBase);
+    return generateVin({base: vehicleObject?.vinBase});
 }
 
 export function getVehicle({ brand = '' }) : Vehicle {
