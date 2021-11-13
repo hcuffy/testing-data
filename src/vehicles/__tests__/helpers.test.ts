@@ -3,7 +3,7 @@
 describe('Vehicle helpers', () => {
     test('return a random vin base', function() {
         const generateVin = require('../helpers').generateVin;
-        const vin = generateVin();
+        const vin = generateVin({});
 
         expect(vin).not.toBeFalsy();
         expect.any(String);

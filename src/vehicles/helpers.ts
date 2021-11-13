@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { vehicleBrands } from './seeds';
 
-export function generateVin({base}) : string {
+export function generateVin({ base }) : string {
     const suffix = _.random(100000, 999999);
 
     return _.join([base, suffix], '');
