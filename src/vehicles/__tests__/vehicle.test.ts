@@ -13,7 +13,7 @@ describe('Vehicle Data', () => {
 
     test('return random vehicle when brand is not provided', function() {
         const getVehicle = require('../').getVehicle;
-        const vehicle = getVehicle();
+        const vehicle = getVehicle({});
         const vehicleBrands = require('../seeds').vehicleBrands;
         const vehicleObject = vehicleBrands.find(brands => brands.brand === vehicle.brand);
 
@@ -28,7 +28,7 @@ describe('Vehicle Data', () => {
 
     test('return specified brand as a vehicle', function() {
         const getVehicle = require('../').getVehicle;
-        const vehicle = getVehicle('Honda');
+        const vehicle = getVehicle({ brand: 'Honda' });
         const vehicleBrands = require('../seeds').vehicleBrands;
         const vehicleObject = vehicleBrands.find(brands => brands.brand === 'Honda');
 
@@ -43,8 +43,8 @@ describe('Vehicle Data', () => {
 
     test('vehicle object returns five props', function() {
         const getVehicle = require('../').getVehicle;
-        const vehicle = getVehicle();
-        const objectSize =  _.size(vehicle)
+        const vehicle = getVehicle({});
+        const objectSize = _.size(vehicle);
         expect(objectSize).toEqual(5);
         expect(vehicle.numberPlate).toStrictEqual(expect.any(String));
     });
@@ -53,7 +53,7 @@ describe('Vehicle Data', () => {
 describe('Random vehicles', () => {
     test('returns array of 1 random vehicle', function() {
         const getVehicles = require('../').getVehicles;
-        const vehicles = getVehicles();
+        const vehicles = getVehicles({});
 
         expect(vehicles).toBeInstanceOf(Array);
         expect(vehicles).toHaveLength(1);
@@ -61,7 +61,7 @@ describe('Random vehicles', () => {
 
     test('returns array of random vehicles if number is a string', function() {
         const getVehicles = require('../').getVehicles;
-        const vehicles = getVehicles('3');
+        const vehicles = getVehicles({ quantity: '3' });
 
         expect(vehicles).toBeInstanceOf(Array);
         expect(vehicles).toHaveLength(3);
@@ -69,7 +69,7 @@ describe('Random vehicles', () => {
 
     test('returns array of random vehicles if number is a float', function() {
         const getVehicles = require('../').getVehicles;
-        const vehicles = getVehicles(3.098);
+        const vehicles = getVehicles({ quantity: 3.098 });
 
         expect(vehicles).toBeInstanceOf(Array);
         expect(vehicles).toHaveLength(3);
@@ -77,7 +77,7 @@ describe('Random vehicles', () => {
 
     test('returns default of three people when argument is not a number', function() {
         const getVehicles = require('../').getVehicles;
-        const vehicles = getVehicles('Not a number');
+        const vehicles = getVehicles({ quantity: 'Not a number' });
 
         expect(vehicles).toBeInstanceOf(Array);
         expect(vehicles).toHaveLength(3);

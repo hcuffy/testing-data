@@ -9,25 +9,25 @@ export function getRandomVin() : string {
     return generateVin(vehicleObject?.vinBase);
 }
 
-export function getVehicle(brand = '') : Vehicle {
+export function getVehicle({ brand = '' }) : Vehicle {
     const vehicleObject = _.find(vehicleBrands, { brand }) || getRandomBrand();
     const vehicleModels = vehicleObject.models;
     const model = vehicleModels[_.random(vehicleModels.length - 1)];
-    const vin = generateVin(vehicleObject.vinBase);
+    const vin = generateVin({ base: vehicleObject.vinBase });
     const engine = getEngineType();
-    const numberPlate = getRandomNumberPlate();
+    const numberPlate = getRandomNumberPlate({});
 
     return {
         brand: vehicleObject.brand, model, vin, engine, numberPlate
     };
 }
 
-export function getVehicles(quantity = 1) : Vehicle[] {
+export function getVehicles({ quantity = 1 }) : Vehicle[] {
     const vehicles: Vehicle[] = [];
-    const revisedQuantity = safeguardNumber(quantity);
+    const revisedQuantity = safeguardNumber({ quantity });
 
     for (let i = 0; i < revisedQuantity; i++) {
-        const vehicle = getVehicle();
+        const vehicle = getVehicle({});
         const vehicleExists = _.some(vehicles, { vin: vehicle.vin });
 
         if (!vehicleExists) {

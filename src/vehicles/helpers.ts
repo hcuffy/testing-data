@@ -19,7 +19,7 @@ export function randomNumber(): string {
     return _.random(10000).toString();
 }
 
-export function randomPlatePrefix(length = 2): string {
+export function randomPlatePrefix({ length = 2 }): string {
     let validLength = length;
 
     if (length > 26 || length < 1){
@@ -31,10 +31,10 @@ export function randomPlatePrefix(length = 2): string {
     return characters.slice(-Math.abs(validLength));
 }
 
-export function getRandomNumberPlate(prefix='', prefixLength = 2) : string {
+export function getRandomNumberPlate({ prefix = '', prefixLength = 2 }) : string {
     if (prefix){
         return `${prefix}${randomNumber()}`;
     }
 
-    return `${randomPlatePrefix(prefixLength)}${randomNumber()}`;
+    return `${randomPlatePrefix({ length: prefixLength })}${randomNumber()}`;
 }

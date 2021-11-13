@@ -1,12 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-import {
-    getRandomNumberPlate as randomNumberPlate,
-    getRandomNumberPlate,
-    randomNumber,
-    randomPlatePrefix
-} from '../helpers';
-
 describe('Vehicle helpers', () => {
     test('return a random vin base', function() {
         const generateVin = require('../helpers').generateVin;
@@ -43,7 +36,7 @@ describe('Vehicle helpers', () => {
 
     test('return two letters', function() {
         const randomPlatePrefix = require('../helpers').randomPlatePrefix;
-        const platePrefix = randomPlatePrefix();
+        const platePrefix = randomPlatePrefix({});
 
         expect(platePrefix).not.toBeFalsy();
         expect(platePrefix.length).toEqual(2);
@@ -52,7 +45,7 @@ describe('Vehicle helpers', () => {
     test('return five letters', function() {
         const numberOfLetters = 5;
         const randomPlatePrefix = require('../helpers').randomPlatePrefix;
-        const platePrefix = randomPlatePrefix(numberOfLetters);
+        const platePrefix = randomPlatePrefix({ length: numberOfLetters });
 
         expect(platePrefix).not.toBeFalsy();
         expect(platePrefix.length).toEqual(numberOfLetters);
@@ -76,7 +69,7 @@ describe('Vehicle helpers', () => {
 
     test('return random plate number', function() {
         const randomNumberPlate = require('../helpers').getRandomNumberPlate;
-        const numberPlate = randomNumberPlate();
+        const numberPlate = randomNumberPlate({});
 
         expect(numberPlate).not.toBeFalsy();
         expect.any(String);
@@ -84,18 +77,17 @@ describe('Vehicle helpers', () => {
 
     test('return plate number with prefix argument', function() {
         const randomNumberPlate = require('../helpers').getRandomNumberPlate;
-        const numberPlate = randomNumberPlate('TEST');
+        const numberPlate = randomNumberPlate({ prefix: 'TEST' });
 
         expect(numberPlate).not.toBeFalsy();
         expect(numberPlate).toContain('TEST');
     });
 
-    test('return plate number with prefix argument and ', function() {
+    test('return plate number with prefix argument and', function() {
         const randomNumberPlate = require('../helpers').getRandomNumberPlate;
         const numberPlate = randomNumberPlate('', 5);
 
         expect(numberPlate).not.toBeFalsy();
         expect.any(String);
     });
-
 });
