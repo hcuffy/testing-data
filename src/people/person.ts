@@ -1,43 +1,36 @@
 import _ from 'lodash';
-import { femaleName, maleName, lastNames } from './seeds';
+import { chance, getBirthDateAndAge, getGender } from './helpers';
+
+export function getFullName({ gender = '' }) : string {
+    const updatedGender = getGender(gender);
+
+    return chance.name({ gender: updatedGender });
+}
 
 export function getFirstName({ gender = '' }) : string {
-    let randomFirstName;
+    const fullName = getFullName({ gender });
 
-    if (gender){
-        randomFirstName = gender === 'female' ? femaleName : maleName;
-    } else {
-        randomFirstName = _.random(0, 1) ? femaleName : maleName;
-    }
-
-    return _.sample(randomFirstName);
+    return _.split(fullName, ' ')[0];
 }
 
 export function getLastName() : string {
-    return _.sample(lastNames) || 'tester';
-}
+    const fullName = getFullName({ gender: '' });
 
-export function getFullName({ gender = '' }) : string {
-    const firstName = getFirstName({ gender });
-    const lastName = getLastName();
-
-    return `${firstName} ${lastName}`;
+    return _.split(fullName, ' ')[1];
 }
 
 export function createEmail({ firstName, lastName, customText = '', domain }) : string {
     const currentDomain = domain ? domain : 'test.com';
+
     if (!firstName && !lastName) {
-        return 'noNameProvided@test.com';
+        return chance.email();
     }
 
     return _.join([firstName, lastName, customText, '@', currentDomain], '');
 }
 
 export function createRandomEmail() : string {
-    const firstName = getFirstName({});
-    const lastName = getLastName();
-
-    return createEmail({ firstName, lastName, customText: '', domain: 'test.com' });
+    return chance.email({ domain: 'test.com' });
 }
 
 export function safeguardNumber({ quantity }){
@@ -62,12 +55,21 @@ export function getMultipleEmails({ quantity = 1, domain }) : string[] {
 }
 
 export function getPerson({ gender = '', domain = '' }) : Person {
-    const firstName = getFirstName({ gender });
+    const updatedGender = getGender(gender);
+    const firstName = getFirstName({ gender: updatedGender });
     const lastName = getLastName();
     const fullName = `${firstName} ${lastName}`;
     const email = createEmail({ firstName, lastName, customText: '', domain });
+    const birthday = getBirthDateAndAge();
 
-    return { firstName, lastName, fullName, email };
+    return {
+        firstName,
+        lastName,
+        fullName,
+        email,
+        gender: updatedGender,
+        ...birthday
+    };
 }
 
 export function getPeople({ quantity = 1 }) : Person[] {

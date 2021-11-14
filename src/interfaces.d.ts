@@ -9,6 +9,9 @@ interface Person {
     lastName: string
     fullName: string
     email: string
+    gender: string
+    birthdate: string
+    age: number
 }
 
 interface Vehicle {

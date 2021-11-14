@@ -37,7 +37,10 @@ const people = getPeople({})
         firstName: 'Vinnie',
         lastName: 'Thomas',
         fullName: 'Vinnie Thomas',
-        email: 'VinnieThomas@test.com''
+        email: 'VinnieThomas@test.com',
+        gender: male
+        birthdate: '1981/09/28'
+        age: 40
       }
     ]
 */
@@ -52,7 +55,7 @@ const people = getPeople({})
 
 `getFullName({gender: 'male'})` : arguments::`gender` 'male'|'female'|NONE   
 
-`createEmail({firstName: 'male', lastName: 'test.com', domain: 'test.com' })` : arguments:: `firstName` optional, `lastName` optional, `domain` optional  
+`createEmail({firstName: 'female', lastName: 'test.com', domain: 'test.com' })` : arguments:: `firstName` optional, `lastName` optional, `domain` optional  
 
 `createRandomEmail({})` : arguments:: NONE
 
