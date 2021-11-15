@@ -4,8 +4,8 @@ import moment from 'moment';
 
 export const chance = new Chance();
 
-export function getGender(gender){
-    const updatedGender = gender ? gender : chance.gender();
+export function getGender({gender=''}){
+    const updatedGender = _.includes(['male','female'], _.lowerCase(gender)) ? gender : chance.gender();
 
     return _.lowerCase(updatedGender);
 }
