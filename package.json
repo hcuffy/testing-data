@@ -4,7 +4,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "author": "Henry Cuffy",
-  "description": "A library to randomly generate vehicle and user data",
+  "description": "Randomly generate vehicle and user data for testing purposes",
   "homepage": "https://github.com/hcuffy/testing-data",
   "license": "MIT",
   "private": false,
