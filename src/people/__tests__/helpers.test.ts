@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-import {getGender} from '../helpers';
-import _ from 'lodash';
-
 describe('Person helpers', () => {
     test('return male when it is provided', function() {
         const getGender = require('../helpers').getGender;
@@ -34,7 +31,7 @@ describe('Person helpers', () => {
         const getGender = require('../helpers').getGender;
         const gender = getGender({});
 
-        expect(['male','female']).toContain(gender);
+        expect(['male', 'female']).toContain(gender);
     });
 
     test('return a random birthday', function() {

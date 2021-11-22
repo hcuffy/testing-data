@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { chance, getBirthDateAndAge, getGender } from './helpers';
 
 export function getFullName({ gender = '' }) : string {
-    const updatedGender = getGender({gender});
+    const updatedGender = getGender({ gender });
 
     return chance.name({ gender: updatedGender });
 }
@@ -55,7 +55,7 @@ export function getMultipleEmails({ quantity = 1, domain }) : string[] {
 }
 
 export function getPerson({ gender = '', domain = '' }) : Person {
-    const updatedGender = getGender({gender});
+    const updatedGender = getGender({ gender });
     const firstName = getFirstName({ gender: updatedGender });
     const lastName = getLastName();
     const fullName = `${firstName} ${lastName}`;
