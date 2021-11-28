@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-
 describe('Person helpers', () => {
     test('return male when it is provided', function() {
         const getGender = require('../helpers').getGender;
@@ -39,6 +38,24 @@ describe('Person helpers', () => {
         const { birthdate, age } = getBirthday();
 
         expect(new Date(birthdate)).toEqual(expect.any(Date));
-        expect(age).toEqual(expect.any(Number));
+        expect(age).toStrictEqual(expect.any(Number));
+    });
+
+    test('return a random address when country is not provided', function() {
+        const getFullAddress = require('../helpers').getFullAddress;
+        const { address, country, zip } = getFullAddress();
+
+        expect(address).toStrictEqual(expect.any(String));
+        expect(country).toStrictEqual(expect.any(String));
+        expect(zip).toStrictEqual(expect.any(String));
+    });
+
+    test('return a random address with provided country', function() {
+        const getFullAddress = require('../helpers').getFullAddress;
+        const { address, country, zip } = getFullAddress({ country: 'Germany' });
+
+        expect(address).toStrictEqual(expect.any(String));
+        expect(country).toEqual('Germany');
+        expect(zip).toStrictEqual(expect.any(String));
     });
 });

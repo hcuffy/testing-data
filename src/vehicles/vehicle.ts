@@ -6,7 +6,7 @@ import { generateVin, getEngineType, getRandomBrand, getRandomNumberPlate } from
 export function getRandomVin() : string {
     const vehicleObject = getRandomBrand();
 
-    return generateVin({ base: vehicleObject?.vinBase });
+    return generateVin({ base: vehicleObject.vinBase });
 }
 
 export function getVehicle({ brand = '' }) : Vehicle {
@@ -24,7 +24,7 @@ export function getVehicle({ brand = '' }) : Vehicle {
 
 export function getVehicles({ quantity = 1 }) : Vehicle[] {
     const vehicles: Vehicle[] = [];
-    const revisedQuantity = safeguardNumber({ quantity });
+    const revisedQuantity = safeguardNumber(quantity);
 
     for (let i = 0; i < revisedQuantity; i++) {
         const vehicle = getVehicle({});

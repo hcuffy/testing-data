@@ -40,7 +40,10 @@ const people = getPeople({})
         email: 'VinnieThomas@test.com',
         gender: male
         birthdate: '1981/09/28'
-        age: 40
+        age: 40,
+        address: '1299 Todil Point',
+        country: 'Croatia',
+        zip: '12005'
       }
     ]
 */
@@ -49,25 +52,25 @@ const people = getPeople({})
 ## Available Functions
 
 ### People:
-`getFirstName({gender: 'male'})`: arguments::`gender` 'male'|'female'|NONE  
+`getFirstName({gender: 'male'})`: arguments::`gender` 'male'|'female'|optional  
 
-`getLastName({})` : arguments:: NONE   
+`getLastName({})` : arguments:: optional   
 
-`getFullName({gender: 'male'})` : arguments::`gender` 'male'|'female'|NONE   
+`getFullName({gender: 'male'})` : arguments::`gender` 'male'|'female'|optional   
 
 `createEmail({firstName: 'female', lastName: 'test.com', domain: 'test.com' })` : arguments:: `firstName` optional, `lastName` optional, `domain` optional  
 
-`createRandomEmail({})` : arguments:: NONE
+`createRandomEmail({})` : arguments:: optional
 
 `getMultipleEmails({quantity: 1, domain: 'test.com'})` : arguments:: `quantity` Number `domain` optional
 
-`getPerson({gender: 'male', domain: 'test.com'})` : arguments:: `gender` 'male'|'female'|NONE, `domain` optional    
+`getPerson({gender: 'male', domain: 'test.com', country: 'Germany'})` : arguments:: `gender` 'male'|'female'|optional , `domain` optional, `country` optional
 
 `getPeople({quantity: 1})` : arguments:: `quantity` Number 
 
 ### Vehicles:
 
-`getRandomVin({})` : arguments:: NONE   
+`getRandomVin({})` : arguments:: optional   
 
 `getVehicle({brand: 'Honda'})` : arguments:: `brand` optional
 

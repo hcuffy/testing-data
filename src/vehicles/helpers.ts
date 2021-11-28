@@ -15,14 +15,14 @@ export function getRandomBrand() : VehicleBrands {
     return vehicleBrands[_.random(vehicleBrands.length - 1)];
 }
 
-export function randomNumber(): string {
+function randomNumber(): string {
     return _.random(10000).toString();
 }
 
-export function randomPlatePrefix({ length = 2 }): string {
-    let validLength = length;
+function randomPlatePrefix(prefixLength): string {
+    let validLength = prefixLength;
 
-    if (length > 26 || length < 1){
+    if (prefixLength > 26 || prefixLength < 1){
         validLength = 2;
     }
 
@@ -36,5 +36,5 @@ export function getRandomNumberPlate({ prefix = '', prefixLength = 2 }) : string
         return `${prefix}${randomNumber()}`;
     }
 
-    return `${randomPlatePrefix({ length: prefixLength })}${randomNumber()}`;
+    return `${randomPlatePrefix(prefixLength)}${randomNumber()}`;
 }

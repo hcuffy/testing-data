@@ -43,6 +43,7 @@ module.exports = {
         'max-len': ['error', 150],
         'no-multiple-empty-lines': ['error', {max: 1}],
         'no-confusing-arrow': 'error',
+        'no-console': 'error',
         'no-duplicate-imports': 'error',
         'no-useless-rename': 'error',
         'no-nested-ternary': 'error',

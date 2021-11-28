@@ -1,20 +1,20 @@
 import _ from 'lodash';
-import { chance, getBirthDateAndAge, getGender } from './helpers';
+import { chance, getBirthDateAndAge, getGender, getFullAddress } from './helpers';
 
-export function getFullName({ gender = '' }) : string {
+export function getFullName(gender) : string {
     const updatedGender = getGender({ gender });
 
     return chance.name({ gender: updatedGender });
 }
 
-export function getFirstName({ gender = '' }) : string {
+export function getFirstName(gender) : string {
     const fullName = getFullName({ gender });
 
     return _.split(fullName, ' ')[0];
 }
 
 export function getLastName() : string {
-    const fullName = getFullName({ gender: '' });
+    const fullName = getFullName('');
 
     return _.split(fullName, ' ')[1];
 }
@@ -33,7 +33,7 @@ export function createRandomEmail() : string {
     return chance.email({ domain: 'test.com' });
 }
 
-export function safeguardNumber({ quantity }){
+export function safeguardNumber(quantity){
     const numberAsInt = Math.abs(_.floor(quantity)) || 3;
 
     return numberAsInt > 50 ? 50 : numberAsInt;
@@ -43,7 +43,7 @@ export function getMultipleEmails({ quantity = 1, domain }) : string[] {
     const arrayOfEmails:string[] = [];
     const firstName = getFirstName({});
     const lastName = getLastName();
-    const revisedQuantity = safeguardNumber({ quantity });
+    const revisedQuantity = safeguardNumber(quantity);
 
     for (let i = 0; i < revisedQuantity; i++) {
         const email = createEmail({ firstName, lastName, customText: i.toString(), domain });
@@ -54,13 +54,12 @@ export function getMultipleEmails({ quantity = 1, domain }) : string[] {
     return arrayOfEmails;
 }
 
-export function getPerson({ gender = '', domain = '' }) : Person {
+export function getPerson({ gender = '', domain = '', country = '' }) : Person {
     const updatedGender = getGender({ gender });
     const firstName = getFirstName({ gender: updatedGender });
     const lastName = getLastName();
     const fullName = `${firstName} ${lastName}`;
     const email = createEmail({ firstName, lastName, customText: '', domain });
-    const birthday = getBirthDateAndAge();
 
     return {
         firstName,
@@ -68,19 +67,20 @@ export function getPerson({ gender = '', domain = '' }) : Person {
         fullName,
         email,
         gender: updatedGender,
-        ...birthday
+        ...getBirthDateAndAge(),
+        ...getFullAddress({ country })
     };
 }
 
 export function getPeople({ quantity = 1 }) : Person[] {
     const people: Person[] = [];
-    const revisedQuantity = safeguardNumber({ quantity });
+    const revisedQuantity = safeguardNumber(quantity);
 
     for (let i = 0; i < revisedQuantity; i++) {
         const person = getPerson({});
-        const userExists = _.some(people, { email: person.email });
+        const personExists = _.some(people, { email: person.email });
 
-        if (!userExists) {
+        if (!personExists) {
             people.push(person);
         }
     }

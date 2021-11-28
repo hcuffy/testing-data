@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import _ from 'lodash';
 
 describe('Person full Name', () => {
     jest.resetAllMocks();
@@ -13,20 +12,17 @@ describe('Person full Name', () => {
     test('returns a random female full name', function() {
         const getFullName = require('../').getFullName;
         const fullName = getFullName({ gender: 'female' });
-        const femaleNames = require('../seeds/firstNames').femaleName;
-        const firstName = fullName.split(' ')[0];
 
-        expect(femaleNames).toContain(firstName);
+        expect(fullName).not.toBeFalsy();
         expect.any(String);
     });
 
     test('returns a random male full name', function() {
         const getFullName = require('../').getFullName;
         const fullName = getFullName({ gender: 'male' });
-        const maleNames = require('../seeds/firstNames').maleName;
-        const firstName = fullName.split(' ')[0];
 
-        expect(maleNames).toContain(firstName);
+        expect(fullName).not.toBeFalsy();
+        expect.any(String);
     });
 });
 
@@ -41,18 +37,27 @@ describe('Person complete data', () => {
         expect(person.lastName).toStrictEqual(expect.any(String));
         expect(person.fullName).toStrictEqual(expect.any(String));
         expect(person.email).toStrictEqual(expect.any(String));
+        expect(person.gender).toStrictEqual(expect.any(String));
+        expect(person.birthdate).toStrictEqual(expect.any(String));
+        expect(person.age).toStrictEqual(expect.any(Number));
+        expect(person.address).toStrictEqual(expect.any(String));
+        expect(person.country).toStrictEqual(expect.any(String));
+        expect(person.zip).toStrictEqual(expect.any(String));
     });
     test('person object returns five props', function() {
         const getPerson = require('../').getPerson;
+        const lodash = require('lodash');
+
         const person = getPerson({});
-        const objectSize = _.size(person);
-        expect(objectSize).toEqual(4);
+        const objectSize = lodash.size(person);
+
+        expect(objectSize).toEqual(10);
     });
     test('returns a generic email when no data is provided', function() {
         const createEmail = require('../').createEmail;
         const email = createEmail({});
 
-        expect(email).toEqual('noNameProvided@test.com');
+        expect(email).toStrictEqual(expect.any(String));
     });
 
     test('returns a generic email when no first name is provided', function() {
@@ -173,6 +178,25 @@ describe('Random people', () => {
         expect(people).toBeInstanceOf(Array);
         expect(people).toHaveLength(3);
     });
+
+    test('returns 50 people when quantity is 50', function() {
+        const getPeople = require('../').getPeople;
+        const people = getPeople({ quantity: 50 });
+
+        expect(people).toBeInstanceOf(Array);
+        expect(people).toHaveLength(50);
+    });
+
+    test('returns 1 persons when quantity is 2 but the email already exists', function() {
+        const getPeople = require('../').getPeople;
+        const lodash = require('lodash');
+        lodash.some = jest.fn().mockReturnValue(false)
+            .mockReturnValueOnce(true);
+        const people = getPeople({ quantity: 2 });
+
+        expect(people).toBeInstanceOf(Array);
+        expect(people).toHaveLength(1);
+    });
 });
 
 describe('Person first and last name', () => {
@@ -186,29 +210,18 @@ describe('Person first and last name', () => {
 
     test('returns a random female first name when the female gender is provided', function() {
         const getFirstName = require('../').getFirstName;
-        const femaleNames = require('../seeds/firstNames').femaleName;
         const randomFirstName = getFirstName({ gender: 'female' });
 
         expect(randomFirstName).not.toBeFalsy();
-        expect(femaleNames).toContain(randomFirstName);
+        expect.any(String);
     });
 
     test('returns a random male first name when the male gender is provided', function() {
         const getFirstName = require('../').getFirstName;
-        const maleNames = require('../seeds/firstNames').maleName;
         const randomFirstName = getFirstName({ gender: 'male' });
 
         expect(randomFirstName).not.toBeFalsy();
-        expect(maleNames).toContain(randomFirstName);
-    });
-
-    test('returns a random male first name when a random gender is provided', function() {
-        const getFirstName = require('../').getFirstName;
-        const maleNames = require('../seeds/firstNames').maleName;
-        const randomFirstName = getFirstName({ gender: 'random' });
-
-        expect(randomFirstName).not.toBeFalsy();
-        expect(maleNames).toContain(randomFirstName);
+        expect(randomFirstName).toStrictEqual(expect.any(String));
     });
 
     test('returns a return a random last name', function() {
@@ -217,42 +230,33 @@ describe('Person first and last name', () => {
 
         expect(randomLastName).not.toBeFalsy();
     });
-
-    test('returns the tester default lastname', function() {
-        const getLastName = require('../').getLastName;
-        const lodash = require('lodash');
-        lodash.sample = jest.fn();
-        const defaultLastName = getLastName({});
-
-        expect(defaultLastName).toBe('tester');
-    });
 });
 
 describe('Number Safeguard', () => {
     test('returns 50 is the argument is greater than 50', function() {
         const safeguardNumber = require('../').safeguardNumber;
-        const number = safeguardNumber({ quantity: 51 });
+        const number = safeguardNumber(51);
 
         expect(number).toEqual(50);
     });
 
     test('returns 3 if no number is provided', function() {
         const safeguardNumber = require('../').safeguardNumber;
-        const number = safeguardNumber({});
+        const number = safeguardNumber();
 
         expect(number).toEqual(3);
     });
 
     test('returns the absolute value of a negative argument', function() {
         const safeguardNumber = require('../').safeguardNumber;
-        const number = safeguardNumber({ quantity: - 5 });
+        const number = safeguardNumber(- 5);
 
         expect(number).toEqual(5);
     });
 
     test('returns floor value of a float argument', function() {
         const safeguardNumber = require('../').safeguardNumber;
-        const number = safeguardNumber({ quantity: 7.6505 });
+        const number = safeguardNumber(7.6505);
 
         expect(number).toEqual(7);
     });
