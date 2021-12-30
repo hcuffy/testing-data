@@ -28,6 +28,7 @@ export const vehicleBrands : VehicleBrands[] = [
     { brand: 'Peugeot', models: ['Boxer', '208', 'Traveller'], vinBase: 'VF3CF2210M0' },
     { brand: 'Porsche', models: ['911', 'Cayenne', 'Taycan'], vinBase: 'WP0AB29828U' },
     { brand: 'Renault', models: ['Kiger', 'KWID', 'Triber'], vinBase: 'VF1AA22B2G3' },
+    { brand: 'Rover', models: ['25', '45', '75'], vinBase: 'GALVT1BG9EJ' },
     { brand: 'Saab', models: ['Quantum', 'MFI13', '900'], vinBase: 'YS3FB4CY9B1' },
     { brand: 'Scania', models: ['L-Series', 'P-Series', 'R-Series'], vinBase: 'YS2k4X20001' },
     { brand: 'Seat', models: ['Arona', 'Tarraco', 'Leon'], vinBase: 'VSSZZZ5FZLR' },
