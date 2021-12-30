@@ -1,6 +1,6 @@
 This module generates basic user and vehicle data. The data can be used for testing purposes.
 
-##Installing
+## Installing
 
 Using npm:
 
