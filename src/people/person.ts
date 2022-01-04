@@ -54,12 +54,12 @@ export function getMultipleEmails({ quantity = 1, domain }) : string[] {
     return arrayOfEmails;
 }
 
-export function getPerson({ gender = '', domain = '', country = '' }) : Person {
+export function getPerson({ gender = '', domain = '', country = '', customText= '' }) : Person {
     const updatedGender = getGender({ gender });
     const firstName = getFirstName({ gender: updatedGender });
     const lastName = getLastName();
     const fullName = `${firstName} ${lastName}`;
-    const email = createEmail({ firstName, lastName, customText: '', domain });
+    const email = createEmail({ firstName, lastName, customText, domain });
 
     return {
         firstName,
