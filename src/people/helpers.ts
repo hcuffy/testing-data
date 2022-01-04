@@ -19,10 +19,14 @@ export function getBirthDateAndAge(){
     return { birthdate, age };
 }
 
+export function getCountry(country){
+    return country ? country : _.sample(countries);
+}
+
 export function getFullAddress(addressArgs){
-    const updatedCountry = addressArgs?.country ? addressArgs.country : _.sample(countries);
+    const country = getCountry(addressArgs?.country);
 
     return { address: chance.address(),
-        country: updatedCountry,
+        country,
         zip:     chance.zip() };
 }
