@@ -17,7 +17,7 @@ import { getVehicles, getPeople } from 'testing-data';
 
 const vehicles = getVehicles({})
 
-/* getVehicles will return an array of vehicle objects. See example below.
+/// getVehicles will return an array of vehicle objects. See example below.
   [
       {
         brand: 'Jaguar',
@@ -31,7 +31,7 @@ const vehicles = getVehicles({})
 
 const people = getPeople({})
 
-/* getPeople will return an array of person object. See example below.
+/// getPeople will return an array of person object. See example below.
   [
       {
         firstName: 'Vinnie',
@@ -41,13 +41,24 @@ const people = getPeople({})
         gender: male
         birthdate: '1981/09/28'
         age: 40,
-        address: '1299 Todil Point',
+        street: '1299 Todil Point',
         country: 'Croatia',
         zip: '12005'
       }
     ]
-*/
+    
+const company = getCompany()
 
+/// getCompany will return a company object. See example below.
+    {
+      name: 'Equitable Resources Inc. 5862',
+      address: { 
+                 street: '992 Icana Center', 
+                 country: 'Canada', 
+                 zip: '71782' 
+               }
+    }
+    
 ```
 ## Available Functions
 

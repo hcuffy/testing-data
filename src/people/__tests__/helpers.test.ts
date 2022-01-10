@@ -43,18 +43,18 @@ describe('Person helpers', () => {
 
     test('return a random address when country is not provided', function() {
         const getFullAddress = require('../helpers').getFullAddress;
-        const { address, country, zip } = getFullAddress();
+        const { street, country, zip } = getFullAddress();
 
-        expect(address).toStrictEqual(expect.any(String));
+        expect(street).toStrictEqual(expect.any(String));
         expect(country).toStrictEqual(expect.any(String));
         expect(zip).toStrictEqual(expect.any(String));
     });
 
     test('return a random address with provided country', function() {
         const getFullAddress = require('../helpers').getFullAddress;
-        const { address, country, zip } = getFullAddress({ country: 'Germany' });
+        const { street, country, zip } = getFullAddress({ country: 'Germany' });
 
-        expect(address).toStrictEqual(expect.any(String));
+        expect(street).toStrictEqual(expect.any(String));
         expect(country).toEqual('Germany');
         expect(zip).toStrictEqual(expect.any(String));
     });

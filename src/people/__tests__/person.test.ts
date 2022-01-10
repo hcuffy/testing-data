@@ -40,7 +40,7 @@ describe('Person complete data', () => {
         expect(person.gender).toStrictEqual(expect.any(String));
         expect(person.birthdate).toStrictEqual(expect.any(String));
         expect(person.age).toStrictEqual(expect.any(Number));
-        expect(person.address).toStrictEqual(expect.any(String));
+        expect(person.street).toStrictEqual(expect.any(String));
         expect(person.country).toStrictEqual(expect.any(String));
         expect(person.zip).toStrictEqual(expect.any(String));
     });

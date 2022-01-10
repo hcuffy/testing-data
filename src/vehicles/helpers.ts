@@ -16,11 +16,11 @@ export function getRandomBrand() : VehicleBrands {
 }
 
 function randomNumber(): string {
-    return _.random(10000).toString();
+    return _.random(99999).toString();
 }
 
 function randomPlatePrefix(prefixLength): string {
-    let validLength = prefixLength;
+    let validLength = prefixLength || 2;
 
     if (prefixLength > 26 || prefixLength < 1){
         validLength = 2;

@@ -26,7 +26,7 @@ export function getCountry(country){
 export function getFullAddress(addressArgs){
     const country = getCountry(addressArgs?.country);
 
-    return { address: chance.address(),
+    return { street: chance.address(),
         country,
-        zip:     chance.zip() };
+        zip:    chance.zip() };
 }

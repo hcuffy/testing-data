@@ -3,10 +3,10 @@
 describe('Company', () => {
     test('return company name and address', function() {
         const getCompany = require('../company').getCompany;
-        const company = getCompany('');
+        const company = getCompany();
 
         expect(company.name).toStrictEqual(expect.any(String));
-        expect(company.address.address).toStrictEqual(expect.any(String));
+        expect(company.address.street).toStrictEqual(expect.any(String));
         expect(company.address.country).toStrictEqual(expect.any(String));
         expect(company.address.zip).toStrictEqual(expect.any(String));
     });
