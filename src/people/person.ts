@@ -26,7 +26,9 @@ export function createEmail({ firstName, lastName, customText = '', domain }) : 
         return chance.email();
     }
 
-    return _.join([firstName, lastName, customText, '@', currentDomain], '');
+    const email = _.join([firstName, lastName, customText, '@', currentDomain], '');
+
+    return _.lowerCase(email);
 }
 
 export function createRandomEmail() : string {
