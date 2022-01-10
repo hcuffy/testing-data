@@ -13,7 +13,7 @@ export function getGender(gender){
 }
 
 export function getBirthDateAndAge(){
-    const birthdate = moment(chance.birthday()).format('YYYY/MM/DD');
+    const birthdate = moment(chance.birthday()).format('YYYY-MM-DD');
     const age = moment().diff(birthdate, 'years');
 
     return { birthdate, age };
