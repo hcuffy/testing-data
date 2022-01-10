@@ -86,3 +86,7 @@ const company = getCompany()
 `getVehicle({brand: 'Honda'})` : arguments:: `brand` optional
 
 `getVehicles({quantity: 1})` : arguments:: `quantity` Number 
+
+### Company:
+
+`getCompany()` : arguments:: `country` optional

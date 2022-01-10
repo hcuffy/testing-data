@@ -7,9 +7,9 @@ import { countries } from './seeds';
 export const chance = new Chance();
 
 export function getGender(gender){
-    const updatedGender = _.includes(['male', 'female'], _.lowerCase(gender)) ? gender : chance.gender();
+    const updatedGender = _.includes(['male', 'female'], _.toLower(gender)) ? gender : chance.gender();
 
-    return _.lowerCase(updatedGender);
+    return _.toLower(updatedGender);
 }
 
 export function getBirthDateAndAge(){

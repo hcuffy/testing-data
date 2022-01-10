@@ -64,28 +64,28 @@ describe('Person complete data', () => {
         const createEmail = require('../').createEmail;
         const email = createEmail({ lastName: 'theLastName' });
 
-        expect(email).toEqual('theLastName@test.com');
+        expect(email).toEqual('thelastname@test.com');
     });
 
     test('returns a generic email when no last name is provided', function() {
         const createEmail = require('../').createEmail;
         const email = createEmail({ firstName: 'theFirstName' });
 
-        expect(email).toEqual('theFirstName@test.com');
+        expect(email).toEqual('thefirstname@test.com');
     });
 
     test('returns the appropriate email when all data is provided', function() {
         const createEmail = require('../').createEmail;
         const email = createEmail({ firstName: 'theFirstName', lastName: 'theLastName', domain: 'theDomain.com' });
 
-        expect(email).toEqual('theFirstNametheLastName@theDomain.com');
+        expect(email).toEqual('thefirstnamethelastname@thedomain.com');
     });
 
     test('returns the appropriate email when the domain is not provided', function() {
         const createEmail = require('../').createEmail;
         const email = createEmail({ firstName: 'theFirstName', lastName: 'theLastName' });
 
-        expect(email).toEqual('theFirstNametheLastName@test.com');
+        expect(email).toEqual('thefirstnamethelastname@test.com');
     });
 });
 
