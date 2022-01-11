@@ -7,5 +7,5 @@ export function getCompany(country =''){
     const name = `${chance.company()} ${buildingNumber}`;
     const address = getFullAddress({ country });
 
-    return { name, address };
+    return { name, ...address };
 }

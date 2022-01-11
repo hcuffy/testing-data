@@ -51,7 +51,7 @@ describe('Person complete data', () => {
         const person = getPerson({});
         const objectSize = lodash.size(person);
 
-        expect(objectSize).toEqual(10);
+        expect(objectSize).toEqual(11);
     });
     test('returns a generic email when no data is provided', function() {
         const createEmail = require('../').createEmail;

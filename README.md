@@ -41,9 +41,10 @@ const people = getPeople({})
         gender: male
         birthdate: '1981/09/28'
         age: 40,
-        street: '1299 Todil Point',
-        country: 'Croatia',
-        zip: '12005'
+        address: '1961 Bivve Circle',
+        street: 'Kezu Boulevard',
+        country: 'Italy',
+        zip: '42376'
       }
     ]
     
@@ -52,11 +53,10 @@ const company = getCompany()
 /// getCompany will return a company object. See example below.
     {
       name: 'Equitable Resources Inc. 5862',
-      address: { 
-                 street: '992 Icana Center', 
-                 country: 'Canada', 
-                 zip: '71782' 
-               }
+      address: '1636 Berwe Avenue',
+      street: 'Kepi Mill',
+      country: 'Germany',
+      zip: '67957'
     }
     
 ```
