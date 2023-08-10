@@ -31,7 +31,10 @@ function randomPlatePrefix(prefixLength): string {
     return characters.slice(-Math.abs(validLength));
 }
 
-export function getRandomNumberPlate({ prefix = '', prefixLength = 2 }) : string {
+export function getRandomNumberPlate(data) : string {
+    const prefix = data?.prefix || '';
+    const prefixLength = data?.prefixLength || 2;
+
     if (prefix){
         return `${prefix}${randomNumber()}`;
     }

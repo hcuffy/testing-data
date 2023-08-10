@@ -19,15 +19,18 @@ export function getBirthDateAndAge(){
     return { birthdate, age };
 }
 
-export function getCountry(country){
+function getCountry(country){
     return country ? country : _.sample(countries);
 }
 
-export function getFullAddress(addressArgs){
-    const country = getCountry(addressArgs?.country);
+export function getFullAddress(data){
+    const country = getCountry(data?.country);
 
-    return { address: chance.address(),
+    return {
+        country: country|| _.sample(countries),
+        city:    chance.city(),
+        address: chance.address(),
         street:  chance.street(),
-        country,
-        zip:     chance.zip() };
+        zip:     chance.zip()
+    };
 }

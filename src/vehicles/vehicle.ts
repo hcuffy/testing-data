@@ -9,8 +9,8 @@ export function getRandomVin() : string {
     return generateVin({ base: vehicleObject.vinBase });
 }
 
-export function getVehicle({ brand = '' }) : Vehicle {
-    const vehicleObject = _.find(vehicleBrands, { brand }) || getRandomBrand();
+export function getVehicle(vehicle) : Vehicle {
+    const vehicleObject = _.find(vehicleBrands, { brand: vehicle?.brand }) || getRandomBrand();
     const vehicleModels = vehicleObject.models;
     const model = vehicleModels[_.random(vehicleModels.length - 1)];
     const vin = generateVin({ base: vehicleObject.vinBase });
@@ -22,7 +22,8 @@ export function getVehicle({ brand = '' }) : Vehicle {
     };
 }
 
-export function getVehicles({ quantity = 1 }) : Vehicle[] {
+export function getVehicles(vehicle ={ quantity: 1 }) : Vehicle[] {
+    const { quantity } = vehicle;
     const vehicles: Vehicle[] = [];
     const revisedQuantity = safeguardNumber(quantity);
 

@@ -15,7 +15,7 @@ Using yarn:
 ```
 import { getVehicles, getPeople } from 'testing-data';
 
-const vehicles = getVehicles({})
+const vehicles = getVehicles()
 
 /// getVehicles will return an array of vehicle objects. See example below.
   [
@@ -29,7 +29,7 @@ const vehicles = getVehicles({})
     ]
 */
 
-const people = getPeople({})
+const people = getPeople()
 
 /// getPeople will return an array of person object. See example below.
   [
@@ -44,6 +44,7 @@ const people = getPeople({})
         address: '1961 Bivve Circle',
         street: 'Kezu Boulevard',
         country: 'Italy',
+        city: 'milan',
         zip: '42376'
       }
     ]
@@ -55,6 +56,7 @@ const company = getCompany()
       name: 'Equitable Resources Inc. 5862',
       address: '1636 Berwe Avenue',
       street: 'Kepi Mill',
+      city: 'Munich',
       country: 'Germany',
       zip: '67957'
     }
@@ -65,13 +67,13 @@ const company = getCompany()
 ### People:
 `getFirstName({gender: 'male'})`: arguments::`gender` 'male'|'female'|optional  
 
-`getLastName({})` : arguments:: optional   
+`getLastName()` : arguments:: optional   
 
 `getFullName({gender: 'male'})` : arguments::`gender` 'male'|'female'|optional   
 
 `createEmail({firstName: 'female', lastName: 'test.com', domain: 'test.com' })` : arguments:: `firstName` optional, `lastName` optional, `domain` optional  
 
-`createRandomEmail({})` : arguments:: optional
+`createRandomEmail()` : arguments:: optional
 
 `getMultipleEmails({quantity: 1, domain: 'test.com'})` : arguments:: `quantity` Number `domain` optional
 
@@ -81,7 +83,7 @@ const company = getCompany()
 
 ### Vehicles:
 
-`getRandomVin({})` : arguments:: optional   
+`getRandomVin()` : arguments:: optional   
 
 `getVehicle({brand: 'Honda'})` : arguments:: `brand` optional
 

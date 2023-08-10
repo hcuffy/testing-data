@@ -2,7 +2,7 @@
 
 describe('Company', () => {
     test('return company name and address', function() {
-        const getCompany = require('../company').getCompany;
+        const { getCompany } = require('../company');
         const company = getCompany();
 
         expect(company.name).toStrictEqual(expect.any(String));
@@ -13,7 +13,7 @@ describe('Company', () => {
     });
 
     test('return company with Germany as the country', function() {
-        const getCompany = require('../company').getCompany;
+        const { getCompany } = require('../company');
         const company = getCompany('Germany');
 
         expect(company.country).toEqual('Germany');

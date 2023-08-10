@@ -19,14 +19,17 @@ export function getLastName() : string {
     return _.split(fullName, ' ')[1];
 }
 
-export function createEmail({ firstName, lastName, customText = '', domain }) : string {
-    const currentDomain = domain ? domain : 'test.com';
+export function createEmail(data) : string {
+    const firstName = data?.firstName;
+    const lastName = data?.lastName;
+    const customText = data?.customText || '';
+    const domain = data?.domain || 'test.com';
 
     if (!firstName && !lastName) {
         return chance.email();
     }
 
-    const email = _.join([firstName, lastName, customText, '@', currentDomain], '');
+    const email = _.join([firstName, lastName, customText, '@', domain], '');
 
     return _.toLower(email);
 }
@@ -35,13 +38,15 @@ export function createRandomEmail() : string {
     return chance.email({ domain: 'test.com' });
 }
 
-export function safeguardNumber(quantity){
+export function safeguardNumber(quantity: number){
     const numberAsInt = Math.abs(_.floor(quantity)) || 3;
 
     return numberAsInt > 50 ? 50 : numberAsInt;
 }
 
-export function getMultipleEmails({ quantity = 1, domain }) : string[] {
+export function getMultipleEmails(data) : string[] {
+    const quantity = data?.quantity || 1;
+    const domain = data?.domain || 'test.com';
     const arrayOfEmails:string[] = [];
     const firstName = getFirstName({});
     const lastName = getLastName();
@@ -56,7 +61,11 @@ export function getMultipleEmails({ quantity = 1, domain }) : string[] {
     return arrayOfEmails;
 }
 
-export function getPerson({ gender = '', domain = '', country = '', customText= '' }) : Person {
+export function getPerson(data) : Person {
+    const gender = data?.gender || '';
+    const domain= data?.domain|| '';
+    const country = data?.country|| '';
+    const customText = data?.customText || '';
     const updatedGender = getGender({ gender });
     const firstName = getFirstName({ gender: updatedGender });
     const lastName = getLastName();
@@ -74,7 +83,8 @@ export function getPerson({ gender = '', domain = '', country = '', customText= 
     };
 }
 
-export function getPeople({ quantity = 1 }) : Person[] {
+export function getPeople(data ={ quantity: 1 }) : Person[] {
+    const { quantity } = data;
     const people: Person[] = [];
     const revisedQuantity = safeguardNumber(quantity);
 
