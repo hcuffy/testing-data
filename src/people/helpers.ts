@@ -1,33 +1,38 @@
 import _ from 'lodash';
-import Chance from 'chance';
 import moment from 'moment';
 
 import { countries } from './seeds';
+import { getChance } from '../utils';
 
-export const chance = new Chance();
+const chance = getChance();
 
-export function getGender(gender){
-    const updatedGender = _.includes(['male', 'female'], _.toLower(gender)) ? gender : chance.gender();
-
-    return _.toLower(updatedGender);
+function getRandomItemFromArray(array) {
+    return _.sample(array);
 }
 
-export function getBirthDateAndAge(){
+export function getValidGender(gender ='') {
+    const validGenders = ['male', 'female'];
+    const lowerCaseGender = _.toLower(gender);
+
+    return validGenders.includes(lowerCaseGender) ? lowerCaseGender : _.toLower(chance.gender());
+}
+
+function getValidCountry(country) {
+    return country || getRandomItemFromArray(countries);
+}
+
+export function getBirthDateAndAge() {
     const birthdate = moment(chance.birthday()).format('YYYY-MM-DD');
     const age = moment().diff(birthdate, 'years');
 
     return { birthdate, age };
 }
 
-function getCountry(country){
-    return country ? country : _.sample(countries);
-}
-
-export function getFullAddress(data){
-    const country = getCountry(data?.country);
+export function getFullAddress(country = '') {
+    const selectedCountry = getValidCountry(country);
 
     return {
-        country: country|| _.sample(countries),
+        country: selectedCountry,
         city:    chance.city(),
         address: chance.address(),
         street:  chance.street(),

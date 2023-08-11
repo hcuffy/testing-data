@@ -1,14 +1,17 @@
 import _ from 'lodash';
-import { chance, getBirthDateAndAge, getGender, getFullAddress } from './helpers';
 
-export function getFullName(gender) : string {
-    const updatedGender = getGender({ gender });
+import { getBirthDateAndAge, getValidGender, getFullAddress } from './helpers';
+import { getChance } from '../utils';
+
+const chance = getChance();
+export function getFullName(gender = '') : string {
+    const updatedGender = getValidGender(gender);
 
     return chance.name({ gender: updatedGender });
 }
 
-export function getFirstName(gender) : string {
-    const fullName = getFullName({ gender });
+export function getFirstName(gender = '') : string {
+    const fullName = getFullName(gender);
 
     return _.split(fullName, ' ')[0];
 }
@@ -48,7 +51,7 @@ export function getMultipleEmails(data) : string[] {
     const quantity = data?.quantity || 1;
     const domain = data?.domain || 'test.com';
     const arrayOfEmails:string[] = [];
-    const firstName = getFirstName({});
+    const firstName = getFirstName();
     const lastName = getLastName();
     const revisedQuantity = safeguardNumber(quantity);
 
@@ -66,8 +69,8 @@ export function getPerson(data) : Person {
     const domain= data?.domain|| '';
     const country = data?.country|| '';
     const customText = data?.customText || '';
-    const updatedGender = getGender({ gender });
-    const firstName = getFirstName({ gender: updatedGender });
+    const updatedGender = getValidGender(gender);
+    const firstName = getFirstName(updatedGender);
     const lastName = getLastName();
     const fullName = `${firstName} ${lastName}`;
     const email = createEmail({ firstName, lastName, customText, domain });
@@ -79,7 +82,7 @@ export function getPerson(data) : Person {
         email,
         gender: updatedGender,
         ...getBirthDateAndAge(),
-        ...getFullAddress({ country })
+        ...getFullAddress(country)
     };
 }
 

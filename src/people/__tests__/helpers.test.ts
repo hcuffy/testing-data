@@ -1,34 +1,34 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 describe('Person helpers', () => {
     test('return male when it is provided', function() {
-        const { getGender } = require('../helpers');
-        const gender = getGender('male');
+        const { getValidGender } = require('../helpers');
+        const gender = getValidGender('male');
 
         expect(gender).toEqual('male');
     });
     test('return female when it is provided', function() {
-        const { getGender } = require('../helpers');
-        const gender = getGender('female');
+        const { getValidGender } = require('../helpers');
+        const gender = getValidGender('female');
 
         expect(gender).toEqual('female');
     });
     test('return lowercase if provided gender is upper', function() {
-        const { getGender } = require('../helpers');
-        const gender = getGender('FEMALE');
+        const { getValidGender } = require('../helpers');
+        const gender = getValidGender('FEMALE');
 
         expect(gender).toEqual('female');
     });
 
     test('return lowercase if provided gender is uppercase if provided', function() {
-        const { getGender } = require('../helpers');
-        const gender = getGender('FEMALE');
+        const { getValidGender } = require('../helpers');
+        const gender = getValidGender('FEMALE');
 
         expect(gender).toEqual('female');
     });
 
     test('return random gender nothing is provided', function() {
-        const { getGender } = require('../helpers');
-        const gender = getGender({});
+        const { getValidGender } = require('../helpers');
+        const gender = getValidGender({});
 
         expect(['male', 'female']).toContain(gender);
     });
@@ -52,7 +52,7 @@ describe('Person helpers', () => {
 
     test('return a random address with provided country', function() {
         const { getFullAddress } = require('../helpers');
-        const { street, country, zip } = getFullAddress({ country: 'Germany' });
+        const { street, country, zip } = getFullAddress('Germany');
 
         expect(street).toStrictEqual(expect.any(String));
         expect(country).toEqual('Germany');
