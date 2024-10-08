@@ -43,6 +43,7 @@ const people = getPeople()
         age: 40,
         address: '1961 Bivve Circle',
         street: 'Kezu Boulevard',
+        streetNumber: 23
         country: 'Italy',
         city: 'milan',
         zip: '42376'
@@ -55,6 +56,7 @@ const company = getCompany()
     {
       name: 'Equitable Resources Inc. 5862',
       address: '1636 Berwe Avenue',
+      streetNumber: 76
       street: 'Kepi Mill',
       city: 'Munich',
       country: 'Germany',

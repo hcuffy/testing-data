@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+import { generateVin, getEngineType, getRandomBrand, getRandomNumberPlate } from '../helpers';
+import _ from 'lodash';
 
 describe('Vehicle helpers', () => {
     test('return a random vin base', function() {
-        const { generateVin } = require('../helpers');
-        const vin = generateVin({});
+        const vin = generateVin({ base: '' });
 
         expect(vin).not.toBeFalsy();
         expect.any(String);
@@ -11,7 +11,6 @@ describe('Vehicle helpers', () => {
     });
 
     test('return a random engine type', function() {
-        const { getEngineType } = require('../helpers');
         const engineType = getEngineType();
 
         expect(engineType).not.toBeFalsy();
@@ -19,9 +18,7 @@ describe('Vehicle helpers', () => {
     });
 
     test('return petrol as engine type as default', function() {
-        const { getEngineType } = require('../helpers');
-        const lodash = require('lodash');
-        lodash.sample = jest.fn();
+        _.sample = jest.fn();
         const engineType = getEngineType();
 
         expect(engineType).not.toBeFalsy();
@@ -29,7 +26,6 @@ describe('Vehicle helpers', () => {
     });
 
     test('return a random brand', function() {
-        const { getRandomBrand } = require('../helpers');
         const brand = getRandomBrand();
 
         expect(brand).not.toBeFalsy();
@@ -37,7 +33,6 @@ describe('Vehicle helpers', () => {
     });
 
     test('return random plate number', function() {
-        const { getRandomNumberPlate } = require('../helpers');
         const numberPlate = getRandomNumberPlate({});
 
         expect(numberPlate).not.toBeFalsy();
@@ -45,7 +40,6 @@ describe('Vehicle helpers', () => {
     });
 
     test('return plate number with prefix argument', function() {
-        const { getRandomNumberPlate } = require('../helpers');
         const numberPlate = getRandomNumberPlate({ prefix: 'TEST' });
 
         expect(numberPlate).not.toBeFalsy();
@@ -53,7 +47,6 @@ describe('Vehicle helpers', () => {
     });
 
     test('return plate number with prefix argument of five letters', function() {
-        const { getRandomNumberPlate } = require('../helpers');
         const numberPlate = getRandomNumberPlate({ prefixLength: 5 });
         const prefix = numberPlate.slice(0, 5);
 
@@ -63,7 +56,6 @@ describe('Vehicle helpers', () => {
     });
 
     test('return plate number with prefix argument of two letter when prefixLength is greater than 26', function() {
-        const { getRandomNumberPlate } = require('../helpers');
         const numberPlate = getRandomNumberPlate({ prefixLength: 27 });
         const prefix = numberPlate.slice(0, 2);
 
@@ -73,7 +65,6 @@ describe('Vehicle helpers', () => {
     });
 
     test('return plate number with prefix argument of two letter when prefixLength is less than 1', function() {
-        const { getRandomNumberPlate } = require('../helpers');
         const numberPlate = getRandomNumberPlate({ prefixLength: 0 });
         const prefix = numberPlate.slice(0, 2);
 
@@ -83,7 +74,6 @@ describe('Vehicle helpers', () => {
     });
 
     test('return plate number with prefix argument of two letter when prefixLength is not provided', function() {
-        const { getRandomNumberPlate } = require('../helpers');
         const numberPlate = getRandomNumberPlate({});
         const prefix = numberPlate.slice(0, 2);
 

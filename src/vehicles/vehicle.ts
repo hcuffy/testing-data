@@ -22,7 +22,7 @@ export function getVehicle(vehicle) : Vehicle {
     };
 }
 
-export function getVehicles(vehicle ={ quantity: 1 }) : Vehicle[] {
+export function getVehicles(vehicle = { quantity: 1 }) : Vehicle[] {
     const { quantity } = vehicle;
     const vehicles: Vehicle[] = [];
     const revisedQuantity = safeguardNumber(quantity);

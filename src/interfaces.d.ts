@@ -12,6 +12,10 @@ interface Person {
     gender: string
     birthdate: string
     age: number
+    street?: string
+    streetNumber?: number
+    country?: string
+    zip?: string
 }
 
 interface Vehicle {

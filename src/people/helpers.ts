@@ -32,10 +32,11 @@ export function getFullAddress(country = '') {
     const selectedCountry = getValidCountry(country);
 
     return {
-        country: selectedCountry,
-        city:    chance.city(),
-        address: chance.address(),
-        street:  chance.street(),
-        zip:     chance.zip()
+        country:      selectedCountry,
+        city:         chance.city(),
+        address:      chance.address(),
+        street:       chance.street(),
+        streetNumber: chance.d100(),
+        zip:          chance.zip()
     };
 }

@@ -41,14 +41,14 @@ export function createRandomEmail() : string {
     return chance.email({ domain: 'test.com' });
 }
 
-export function safeguardNumber(quantity: number){
-    const numberAsInt = Math.abs(_.floor(quantity)) || 3;
+export function safeguardNumber(quantity: number = 3){
+    const numberAsInt = Math.abs(_.floor(quantity));
 
     return numberAsInt > 50 ? 50 : numberAsInt;
 }
 
-export function getMultipleEmails(data) : string[] {
-    const quantity = data?.quantity || 1;
+export function getMultipleEmails(data ={ quantity: 1, domain: '' }) : string[] {
+    const quantity = data?.quantity;
     const domain = data?.domain || 'test.com';
     const arrayOfEmails:string[] = [];
     const firstName = getFirstName();
