@@ -50,14 +50,15 @@ describe('Person complete data', () => {
         expect(person.streetNumber).toStrictEqual(expect.any(Number));
         expect(person.country).toStrictEqual(expect.any(String));
         expect(person.zip).toStrictEqual(expect.any(String));
-        expect(person.phoneNumber).toStrictEqual(expect.any(String));
+        expect(person.landline).toStrictEqual(expect.any(String));
         expect(person.mobileNumber).toStrictEqual(expect.any(String));
-        expect(person.country).toStrictEqual(expect.any(String));
+        expect(person.phoneCountry).toStrictEqual(expect.any(String));
+        expect(person.phoneCountryCode).toStrictEqual(expect.any(String));
     });
     test('person object returns all props', function() {
         const person = getPerson({});
 
-        expect(_.size(person)).toEqual(15);
+        expect(_.size(person)).toEqual(17);
     });
     test('returns a generic email when no data is provided', function() {
         const email = createEmail({});

@@ -46,7 +46,11 @@ const people = getPeople()
         streetNumber: 23
         country: 'Italy',
         city: 'milan',
-        zip: '42376'
+        zip: '42376',
+        landline: '01897359870',
+        mobileNumber: '07446417720',
+        phoneCountry: 'uk',
+        phoneCountryCode: '44'
       }
     ]
     

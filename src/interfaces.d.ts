@@ -5,9 +5,10 @@ interface VehicleBrands {
 }
 
 interface PhoneNumbers {
-    phoneNumber: string,
+    landline: string,
     mobileNumber: string,
-    country: string
+    phoneCountry: string,
+    phoneCountryCode: string
 }
 
 interface Person extends PhoneNumbers {

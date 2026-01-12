@@ -66,15 +66,13 @@ export function getMultipleEmails(data = { quantity: 1, domain: '' }): string[] 
 
     return arrayOfEmails;
 }
-const availableCountries = ['us', 'uk', 'fr'];
+const availableCountries = { us: '1', uk: '44', fr: '33' };
 export function getPhoneNumbers(): PhoneNumbers{
-    const country =
-    availableCountries[Math.floor(Math.random() * availableCountries.length)];
+    const [key, value] = _.sample(_.toPairs(availableCountries))!;
+    const landline = chance.phone({ country: key, formatted: false });
+    const mobileNumber = chance.phone({ country: key, formatted: false, mobile: true });
 
-    const phoneNumber = chance.phone({ country, formatted: false });
-    const mobileNumber = chance.phone({ country, formatted: false, mobile: true });
-
-    return { phoneNumber, mobileNumber, country };
+    return { landline, mobileNumber, phoneCountry: key, phoneCountryCode: value };
 }
 
 export function getPerson(data): Person {
