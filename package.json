@@ -14,12 +14,12 @@
   },
   "scripts": {
     "build": "tsc",
-    "fix": "yarn eslint src --fix",
+    "fix": "pnpm eslint src --fix",
     "lint": "eslint src/**/*.ts",
-    "prepare": "yarn build",
-    "prepublishOnly": "yarn test && yarn lint",
+    "prepare": "pnpm build",
+    "prepublishOnly": "pnpm test && pnpm lint",
     "test": "jest",
-    "coverage": "yarn test --coverage"
+    "coverage": "pnpm test --coverage"
   },
   "dependencies": {
     "chance": "^1.1.13",
