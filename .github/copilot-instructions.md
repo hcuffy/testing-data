@@ -16,7 +16,7 @@ Guidelines for developing the **testing-data** npm library - a TypeScript packag
 
 ## Project Structure
 
-```
+```text
 src/
 ├── index.ts              # Main entry (re-exports all modules)
 ├── interfaces.d.ts       # Global type definitions
