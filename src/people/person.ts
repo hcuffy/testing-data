@@ -4,25 +4,25 @@ import { getBirthDateAndAge, getValidGender, getFullAddress } from './helpers';
 import { getChance } from '../utils';
 
 const chance = getChance();
-export function getFullName(gender = '') : string {
+export function getFullName(gender = ''): string {
     const updatedGender = getValidGender(gender);
 
     return chance.name({ gender: updatedGender });
 }
 
-export function getFirstName(gender = '') : string {
+export function getFirstName(gender = ''): string {
     const fullName = getFullName(gender);
 
     return _.split(fullName, ' ')[0];
 }
 
-export function getLastName() : string {
+export function getLastName(): string {
     const fullName = getFullName('');
 
     return _.split(fullName, ' ')[1];
 }
 
-export function createEmail(data) : string {
+export function createEmail(data): string {
     const firstName = data?.firstName;
     const lastName = data?.lastName;
     const customText = data?.customText || '';
@@ -37,37 +37,48 @@ export function createEmail(data) : string {
     return _.toLower(email);
 }
 
-export function createRandomEmail() : string {
+export function createRandomEmail(): string {
     return chance.email({ domain: 'test.com' });
 }
 
-export function safeguardNumber(quantity: number = 3){
+export function safeguardNumber(quantity: number = 3) {
     const numberAsInt = Math.abs(_.floor(quantity));
 
     return numberAsInt > 50 ? 50 : numberAsInt;
 }
 
-export function getMultipleEmails(data ={ quantity: 1, domain: '' }) : string[] {
+export function getMultipleEmails(data = { quantity: 1, domain: '' }): string[] {
     const quantity = data?.quantity;
     const domain = data?.domain || 'test.com';
-    const arrayOfEmails:string[] = [];
+    const arrayOfEmails: string[] = [];
     const firstName = getFirstName();
     const lastName = getLastName();
     const revisedQuantity = safeguardNumber(quantity);
 
     for (let i = 0; i < revisedQuantity; i++) {
-        const email = createEmail({ firstName, lastName, customText: i.toString(), domain });
+        const email = createEmail({ firstName,
+            lastName,
+            customText: i.toString(),
+            domain });
 
         arrayOfEmails.push(email);
     }
 
     return arrayOfEmails;
 }
+const availableCountries = { us: '1', uk: '44', fr: '33' };
+export function getPhoneNumbers(): PhoneNumbers{
+    const [key, value] = _.sample(_.toPairs(availableCountries))!;
+    const landline = chance.phone({ country: key, formatted: false });
+    const mobileNumber = chance.phone({ country: key, formatted: false, mobile: true });
 
-export function getPerson(data) : Person {
+    return { landline, mobileNumber, phoneCountry: key, phoneCountryCode: value };
+}
+
+export function getPerson(data): Person {
     const gender = data?.gender || '';
-    const domain= data?.domain|| '';
-    const country = data?.country|| '';
+    const domain = data?.domain || '';
+    const country = data?.country || '';
     const customText = data?.customText || '';
     const updatedGender = getValidGender(gender);
     const firstName = getFirstName(updatedGender);
@@ -82,11 +93,12 @@ export function getPerson(data) : Person {
         email,
         gender: updatedGender,
         ...getBirthDateAndAge(),
-        ...getFullAddress(country)
+        ...getFullAddress(country),
+        ...getPhoneNumbers()
     };
 }
 
-export function getPeople(data ={ quantity: 1 }) : Person[] {
+export function getPeople(data = { quantity: 1 }): Person[] {
     const { quantity } = data;
     const people: Person[] = [];
     const revisedQuantity = safeguardNumber(quantity);

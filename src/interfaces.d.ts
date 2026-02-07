@@ -4,7 +4,14 @@ interface VehicleBrands {
     vinBase: string
 }
 
-interface Person {
+interface PhoneNumbers {
+    landline: string,
+    mobileNumber: string,
+    phoneCountry: string,
+    phoneCountryCode: string
+}
+
+interface Person extends PhoneNumbers {
     firstName: string
     lastName: string
     fullName: string
