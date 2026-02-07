@@ -6,12 +6,15 @@ on:
 
 jobs:
   publish:
+    permissions:
+        contents: read
+        id-token: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - run: corepack enable && corepack prepare pnpm@latest --activate
-      
+
+      - run: corepack enable
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -27,5 +30,3 @@ jobs:
 
       - name: Publish to npm
         run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
