@@ -18,7 +18,7 @@
     "lint": "eslint src/**/*.ts",
     "prepare": "pnpm build",
     "prepublishOnly": "pnpm test && pnpm lint",
-    "release": "ts-node scripts/release.ts",
+    "release": "bash scripts/release.sh",
     "release:patch": "npm version patch && pnpm release",
     "release:minor": "npm version minor && pnpm release",
     "release:major": "npm version major && pnpm release",
