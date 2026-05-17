@@ -6,9 +6,9 @@ Using npm:
 
 `$ npm install testing-data --save-dev`
 
-Using yarn:
+Using pnpm:
 
-`$ yarn add testing-data -D`
+`$ pnpm add testing-data -D`
 
 ## Example
 
