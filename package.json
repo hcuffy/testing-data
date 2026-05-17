@@ -18,6 +18,10 @@
     "lint": "eslint src/**/*.ts",
     "prepare": "pnpm build",
     "prepublishOnly": "pnpm test && pnpm lint",
+    "release": "ts-node scripts/release.ts",
+    "release:patch": "npm version patch && pnpm release",
+    "release:minor": "npm version minor && pnpm release",
+    "release:major": "npm version major && pnpm release",
     "test": "jest",
     "coverage": "pnpm test --coverage"
   },
