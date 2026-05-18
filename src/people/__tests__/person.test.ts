@@ -135,13 +135,12 @@ describe('Random people', () => {
         expect(people).toHaveLength(50);
     });
 
-    test('returns 1 persons when quantity is 2 but the email already exists', function() {
-        _.some = jest.fn().mockReturnValue(false)
-            .mockReturnValueOnce(true);
+    test('returns requested quantity even when duplicate emails are generated', function() {
         const people = getPeople({ quantity: 2 });
 
         expect(people).toBeInstanceOf(Array);
-        expect(people).toHaveLength(1);
+        expect(people).toHaveLength(2);
+        expect(new Set(people.map(person => person.email)).size).toBe(2);
     });
 });
 

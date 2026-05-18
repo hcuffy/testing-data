@@ -1,6 +1,5 @@
 import { getFullAddress } from '../people/helpers';
 import { getChance } from '../utils';
-import type { Company, GetCompanyOptions } from '../types';
 
 const chance = getChance();
 

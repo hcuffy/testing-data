@@ -3,7 +3,6 @@ import _ from 'lodash';
 import { vehicleBrands } from './seeds';
 import { fillUniqueItems, safeguardNumber } from '../utils';
 import { generateVin, getEngineType, getRandomBrand, getRandomNumberPlate } from './helpers';
-import type { GetVehicleOptions, GetVehiclesOptions, Vehicle } from '../types';
 
 export function getRandomVin(): string {
     const vehicleObject = getRandomBrand();

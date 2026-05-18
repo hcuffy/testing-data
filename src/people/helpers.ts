@@ -2,7 +2,6 @@ import dayjs from 'dayjs';
 
 import { countries } from './seeds';
 import { getChance } from '../utils';
-import type { Gender } from '../types';
 
 const chance = getChance();
 

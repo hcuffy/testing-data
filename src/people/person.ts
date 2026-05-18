@@ -1,13 +1,5 @@
 import { getBirthDateAndAge, getValidGender, getFullAddress } from './helpers';
 import { fillUniqueItems, getChance, safeguardNumber } from '../utils';
-import type {
-    CreateEmailOptions,
-    GetMultipleEmailsOptions,
-    GetPeopleOptions,
-    GetPersonOptions,
-    Person,
-    PhoneNumbers
-} from '../types';
 
 export { safeguardNumber } from '../utils';
 
