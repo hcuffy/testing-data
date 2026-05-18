@@ -24,21 +24,14 @@ function getValidCountry(country: string): string {
     return country || getRandomItemFromArray(countries);
 }
 
-export function getBirthDateAndAge(): { birthdate: string; age: number } {
+export function getBirthDateAndAge(): BirthDateAndAge {
     const birthdate = dayjs(chance.birthday()).format('YYYY-MM-DD');
     const age = dayjs().diff(birthdate, 'year');
 
     return { birthdate, age };
 }
 
-export function getFullAddress(country = ''): {
-    country: string;
-    city: string;
-    address: string;
-    street: string;
-    streetNumber: number;
-    zip: string;
-} {
+export function getFullAddress(country = ''): FullAddress {
     const selectedCountry = getValidCountry(country);
 
     return {

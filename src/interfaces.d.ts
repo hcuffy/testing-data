@@ -13,6 +13,20 @@ interface PhoneNumbers {
     phoneCountryCode: string;
 }
 
+interface BirthDateAndAge {
+    birthdate: string;
+    age: number;
+}
+
+interface FullAddress {
+    country: string;
+    city: string;
+    address: string;
+    street: string;
+    streetNumber: number;
+    zip: string;
+}
+
 interface Person extends PhoneNumbers {
     firstName: string;
     lastName: string;
@@ -37,14 +51,8 @@ interface Vehicle {
     numberPlate: string;
 }
 
-interface Company {
+interface Company extends FullAddress {
     name: string;
-    address: string;
-    street: string;
-    streetNumber: number;
-    city: string;
-    country: string;
-    zip: string;
 }
 
 interface CreateEmailOptions {
