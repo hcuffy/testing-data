@@ -5,12 +5,16 @@ export function getChance(): Chance.Chance {
 }
 
 export function safeguardNumber(quantity: number = 3): number {
-    const numberAsInt = Math.floor(Math.abs(quantity));
+    const numberAsInteger = Math.floor(Math.abs(quantity));
 
-    return numberAsInt > 50 ? 50 : numberAsInt;
+    return Math.min(numberAsInteger, 50);
 }
 
-export function fillUniqueItems<T>(targetCount: number, createItem: () => T, isDuplicate: (item: T, items: T[]) => boolean): T[] {
+export function fillUniqueItems<T>(
+    targetCount: number,
+    createItem: () => T,
+    isDuplicate: DuplicateChecker<T>
+): T[] {
     const items: T[] = [];
     let attempts = 0;
     const maxAttempts = targetCount * 20;

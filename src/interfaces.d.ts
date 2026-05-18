@@ -81,3 +81,6 @@ interface GetVehiclesOptions {
 interface GetCompanyOptions {
     country?: string;
 }
+
+// eslint-disable-next-line no-unused-vars
+type DuplicateChecker<T> = (candidate: T, existingItems: readonly T[]) => boolean;
