@@ -8,7 +8,7 @@ describe('Vehicle Data', () => {
 
         expect(vin.length).toEqual(17);
         expect(vin).not.toBeFalsy();
-        expect.any(String);
+        expect(vin).toStrictEqual(expect.any(String));
     });
 
     test('return random vehicle when brand is not provided', function() {

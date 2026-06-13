@@ -12,7 +12,7 @@ export const vehicleBrands : VehicleBrands[] = [
     { brand: 'Hyundai', models: ['Tucson', 'Accent', 'Santa Fe'], vinBase: 'KM8JUCAGXEU' },
     { brand: 'Infiniti', models: ['Q50', 'Q60', 'QX60'], vinBase: 'JN1CV6FP0A0' },
     { brand: 'Isuzu', models: ['Ascender', 'Trooper', 'Amigo'], vinBase: '4NUDS13S762' },
-    { brand: 'Iveco', models: ['Trakker', 'Stralis', 'Strator'], vinBase: '4NUDS13S762' },
+    { brand: 'Iveco', models: ['Trakker', 'Stralis', 'Strator'], vinBase: 'ZCFC35ADXG1' },
     { brand: 'Jaguar', models: ['F-TYPE', 'F-PACE', 'XF'], vinBase: 'SAJWA0HP2DM' },
     { brand: 'Jeep', models: ['Wrangler', 'Compass', 'Wagoneer'], vinBase: '1C4PJMCB1FW' },
     { brand: 'Kia', models: ['Rio', 'Optima', 'Seltos'], vinBase: 'KNDPC3A25B7' },

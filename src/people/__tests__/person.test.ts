@@ -22,14 +22,14 @@ describe('Person full Name', () => {
         const fullName = getFullName('female');
 
         expect(fullName).not.toBeFalsy();
-        expect.any(String);
+        expect(fullName).toStrictEqual(expect.any(String));
     });
 
     test('returns a random male full name', function() {
         const fullName = getFullName('male');
 
         expect(fullName).not.toBeFalsy();
-        expect.any(String);
+        expect(fullName).toStrictEqual(expect.any(String));
     });
 });
 
@@ -135,13 +135,12 @@ describe('Random people', () => {
         expect(people).toHaveLength(50);
     });
 
-    test('returns 1 persons when quantity is 2 but the email already exists', function() {
-        _.some = jest.fn().mockReturnValue(false)
-            .mockReturnValueOnce(true);
+    test('returns requested quantity even when duplicate emails are generated', function() {
         const people = getPeople({ quantity: 2 });
 
         expect(people).toBeInstanceOf(Array);
-        expect(people).toHaveLength(1);
+        expect(people).toHaveLength(2);
+        expect(new Set(people.map(person => person.email)).size).toBe(2);
     });
 });
 
@@ -150,14 +149,14 @@ describe('Person first and last name', () => {
         const randomFirstName = getFirstName();
 
         expect(randomFirstName).not.toBeFalsy();
-        expect.any(String);
+        expect(randomFirstName).toStrictEqual(expect.any(String));
     });
 
     test('returns a random female first name when the female gender is provided', function() {
         const randomFirstName = getFirstName('female');
 
         expect(randomFirstName).not.toBeFalsy();
-        expect.any(String);
+        expect(randomFirstName).toStrictEqual(expect.any(String));
     });
 
     test('returns a random male first name when the male gender is provided', function() {

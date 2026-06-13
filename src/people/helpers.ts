@@ -1,34 +1,37 @@
-import _ from 'lodash';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import { countries } from './seeds';
 import { getChance } from '../utils';
 
 const chance = getChance();
 
-function getRandomItemFromArray(array) {
-    return _.sample(array);
+function getRandomItemFromArray<T>(array: T[]): T {
+    return array[Math.floor(Math.random() * array.length)];
 }
 
-export function getValidGender(gender ='') {
-    const validGenders = ['male', 'female'];
-    const lowerCaseGender = _.toLower(gender);
+export function getValidGender(gender = ''): Gender {
+    const validGenders: Gender[] = ['male', 'female'];
+    const lowerCaseGender = gender.toLowerCase();
 
-    return validGenders.includes(lowerCaseGender) ? lowerCaseGender : _.toLower(chance.gender());
+    if (validGenders.includes(lowerCaseGender as Gender)) {
+        return lowerCaseGender as Gender;
+    }
+
+    return chance.gender().toLowerCase() as Gender;
 }
 
-function getValidCountry(country) {
+function getValidCountry(country: string): string {
     return country || getRandomItemFromArray(countries);
 }
 
-export function getBirthDateAndAge() {
-    const birthdate = moment(chance.birthday()).format('YYYY-MM-DD');
-    const age = moment().diff(birthdate, 'years');
+export function getBirthDateAndAge(): BirthDateAndAge {
+    const birthdate = dayjs(chance.birthday()).format('YYYY-MM-DD');
+    const age = dayjs().diff(birthdate, 'year');
 
     return { birthdate, age };
 }
 
-export function getFullAddress(country = '') {
+export function getFullAddress(country = ''): FullAddress {
     const selectedCountry = getValidCountry(country);
 
     return {

@@ -6,7 +6,7 @@ describe('Vehicle helpers', () => {
         const vin = generateVin({ base: '' });
 
         expect(vin).not.toBeFalsy();
-        expect.any(String);
+        expect(vin).toStrictEqual(expect.any(String));
         expect(vin.length).toEqual(6);
     });
 
@@ -14,7 +14,7 @@ describe('Vehicle helpers', () => {
         const engineType = getEngineType();
 
         expect(engineType).not.toBeFalsy();
-        expect.any(String);
+        expect(engineType).toStrictEqual(expect.any(String));
     });
 
     test('return petrol as engine type as default', function() {
@@ -22,21 +22,21 @@ describe('Vehicle helpers', () => {
         const engineType = getEngineType();
 
         expect(engineType).not.toBeFalsy();
-        expect.any(String);
+        expect(engineType).toStrictEqual(expect.any(String));
     });
 
     test('return a random brand', function() {
         const brand = getRandomBrand();
 
         expect(brand).not.toBeFalsy();
-        expect.any(String);
+        expect(brand).toBeInstanceOf(Object);
     });
 
     test('return random plate number', function() {
         const numberPlate = getRandomNumberPlate({});
 
         expect(numberPlate).not.toBeFalsy();
-        expect.any(String);
+        expect(numberPlate).toStrictEqual(expect.any(String));
     });
 
     test('return plate number with prefix argument', function() {

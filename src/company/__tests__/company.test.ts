@@ -13,7 +13,7 @@ describe('Company', () => {
     });
 
     test('return company with Germany as the country', function() {
-        const company = getCompany('Germany');
+        const company = getCompany({ country: 'Germany' });
 
         expect(company.country).toEqual('Germany');
     });

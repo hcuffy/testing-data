@@ -1,20 +1,18 @@
-import _ from 'lodash';
-
-import { getFullAddress } from '../people';
+import { getFullAddress } from '../people/helpers';
 import { getChance } from '../utils';
 
 const chance = getChance();
 
-function generateCompanyName() {
-    const buildingNumber = _.random(9999);
+function generateCompanyName(): string {
+    const buildingNumber = Math.floor(Math.random() * 10000);
     const companyName = chance.company();
 
     return `${companyName} ${buildingNumber}`;
 }
 
-export function getCompany(country = '') {
+export function getCompany(options: GetCompanyOptions = {}): Company {
     const companyName = generateCompanyName();
-    const address = getFullAddress(country);
+    const address = getFullAddress(options.country ?? '');
 
     return { name: companyName, ...address };
 }
