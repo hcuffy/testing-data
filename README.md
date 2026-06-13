@@ -12,89 +12,91 @@ Using pnpm:
 
 ## Example
 
+```javascript
+import { getVehicles, getPeople, getCompany } from 'testing-data';
+
+const vehicles = getVehicles();
+
+// getVehicles will return an array of vehicle objects. See example below.
+// [
+//   {
+//     brand: 'Jaguar',
+//     model: 'F-TYPE',
+//     vin: 'SAJWA0HP2DM522159',
+//     engine: 'autogas',
+//     numberPlate: 'XE5607'
+//   }
+// ]
+
+const people = getPeople();
+
+// getPeople will return an array of person objects. See example below.
+// [
+//   {
+//     firstName: 'Vinnie',
+//     lastName: 'Thomas',
+//     fullName: 'Vinnie Thomas',
+//     email: 'VinnieThomas@test.com',
+//     gender: 'male',
+//     birthdate: '1981-09-28',
+//     age: 40,
+//     address: '1961 Bivve Circle',
+//     street: 'Kezu Boulevard',
+//     streetNumber: 23,
+//     country: 'Italy',
+//     city: 'Milan',
+//     zip: '42376',
+//     landline: '01897359870',
+//     mobileNumber: '07446417720',
+//     phoneCountry: 'uk',
+//     phoneCountryCode: '44'
+//   }
+// ]
+
+const company = getCompany();
+
+// getCompany will return a company object. See example below.
+// {
+//   name: 'Equitable Resources Inc. 5862',
+//   address: '1636 Berwe Avenue',
+//   streetNumber: 76,
+//   street: 'Kepi Mill',
+//   city: 'Munich',
+//   country: 'Germany',
+//   zip: '67957'
+// }
 ```
-import { getVehicles, getPeople } from 'testing-data';
 
-const vehicles = getVehicles()
-
-/// getVehicles will return an array of vehicle objects. See example below.
-  [
-      {
-        brand: 'Jaguar',
-        model: 'F-TYPE',
-        vin: 'SAJWA0HP2DM522159',
-        engine: 'autogas',
-        numberPlate: 'XE5607'
-      }
-    ]
-*/
-
-const people = getPeople()
-
-/// getPeople will return an array of person object. See example below.
-  [
-      {
-        firstName: 'Vinnie',
-        lastName: 'Thomas',
-        fullName: 'Vinnie Thomas',
-        email: 'VinnieThomas@test.com',
-        gender: male
-        birthdate: '1981/09/28'
-        age: 40,
-        address: '1961 Bivve Circle',
-        street: 'Kezu Boulevard',
-        streetNumber: 23
-        country: 'Italy',
-        city: 'milan',
-        zip: '42376',
-        landline: '01897359870',
-        mobileNumber: '07446417720',
-        phoneCountry: 'uk',
-        phoneCountryCode: '44'
-      }
-    ]
-    
-const company = getCompany()
-
-/// getCompany will return a company object. See example below.
-    {
-      name: 'Equitable Resources Inc. 5862',
-      address: '1636 Berwe Avenue',
-      streetNumber: 76
-      street: 'Kepi Mill',
-      city: 'Munich',
-      country: 'Germany',
-      zip: '67957'
-    }
-    
-```
 ## Available Functions
 
 ### People:
-`getFirstName({gender: 'male'})`: arguments::`gender` 'male'|'female'|optional  
 
-`getLastName()` : arguments:: optional   
+`getFirstName(gender?)`: arguments:: `gender` 'male'|'female'|optional
 
-`getFullName({gender: 'male'})` : arguments::`gender` 'male'|'female'|optional   
+`getLastName()` : arguments:: optional
 
-`createEmail({firstName: 'female', lastName: 'test.com', domain: 'test.com' })` : arguments:: `firstName` optional, `lastName` optional, `domain` optional  
+`getFullName(gender?)` : arguments:: `gender` 'male'|'female'|optional
+
+`createEmail({firstName?, lastName?, domain?})` : arguments:: `firstName` optional, `lastName` optional, `domain` optional
 
 `createRandomEmail()` : arguments:: optional
 
-`getMultipleEmails({quantity: 1, domain: 'test.com'})` : arguments:: `quantity` Number `domain` optional
+`getMultipleEmails({quantity?, domain?})` : arguments:: `quantity` Number, `domain` optional
 
-`getPerson({gender: 'male', domain: 'test.com', country: 'Germany'})` : arguments:: `gender` 'male'|'female'|optional , `domain` optional, `country` optional
+`getPerson({gender?, domain?, country?})` : arguments:: `gender` 'male'|'female'|optional, `domain` optional, `country` optional
 
-`getPeople({quantity: 1})` : arguments:: `quantity` Number 
+`getPeople({quantity?})` : arguments:: `quantity` Number
+
+`getPhoneNumbers()` : arguments:: none
 
 ### Vehicles:
 
-`getRandomVin()` : arguments:: optional   
+`getRandomVin()` : arguments:: optional
 
-`getVehicle({brand: 'Honda'})` : arguments:: `brand` optional
+`getVehicle({brand?})` : arguments:: `brand` optional
 
-`getVehicles({quantity: 1})` : arguments:: `quantity` Number 
+`getVehicles({quantity?})` : arguments:: `quantity` Number
 
 ### Company:
 
-`getCompany()` : arguments:: `country` optional
+`getCompany({country?})` : arguments:: `country` optional

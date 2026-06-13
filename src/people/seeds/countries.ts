@@ -12,7 +12,6 @@ export const countries : string[] = [
     'France',
     'Germany',
     'Greece',
-    'Greece',
     'Hong Kong',
     'Hungary',
     'India',

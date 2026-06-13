@@ -54,7 +54,7 @@ export function getVehicle(vehicle): Vehicle {
 ```typescript
 // External imports first
 import _ from 'lodash';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 // Local imports
 import { vehicleBrands } from './seeds';
@@ -138,7 +138,7 @@ export * from './helpers';
 |---------|---------|
 | `chance` | Random data generation |
 | `lodash` | Array/object utilities |
-| `moment` | Date manipulation |
+| `dayjs` | Date manipulation |
 
 ## Troubleshooting
 
