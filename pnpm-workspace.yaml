@@ -1,3 +1,5 @@
 allowBuilds:
   unrs-resolver: true
 minimumReleaseAge: 20160
+minimumReleaseAgeExclude:
+  - handlebars@4.7.10
