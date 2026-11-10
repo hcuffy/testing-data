@@ -7,3 +7,38 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - dependencies
+    groups:
+      npm-minor-and-patch:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+      npm-security-minor-and-patch:
+        applies-to: security-updates
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    groups:
+      github-actions-minor-and-patch:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+      github-actions-security-minor-and-patch:
+        applies-to: security-updates
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
