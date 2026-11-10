@@ -34,22 +34,23 @@
     "@eslint/eslintrc": "3.3.7",
     "@eslint/js": "10.0.1",
     "@types/jest": "30.0.0",
-    "@types/lodash": "4.17.26",
+    "@types/lodash": "4.17.27",
     "@types/node": "26.6.5",
-    "@typescript-eslint/eslint-plugin": "8.65.0",
-    "@typescript-eslint/parser": "8.71.1",
-    "eslint": "10.12.0",
-    "eslint-plugin-jest": "29.16.6",
+    "@typescript-eslint/eslint-plugin": "8.71.1",
+    "@typescript-eslint/parser": "8.72.0",
+    "eslint": "10.13.0",
+    "eslint-plugin-jest": "29.17.0",
     "globals": "17.13.0",
     "jest": "30.5.2",
-    "ts-jest": "29.4.14",
+    "ts-jest": "29.4.15",
     "ts-node": "10.9.2",
     "typescript": "6.0.3"
   },
   "pnpm": {
     "overrides": {
       "@typescript-eslint/utils": "8.65.0",
-      "minimatch@>=9.0.0 <9.0.9": "9.0.9",
+      "minimatch@>=7.0.0": "11.0.2",
+      "glob@>=9.0.0 <=14.0.1": "14.0.3",
       "picomatch@>=2.0.0 <2.3.2": "2.3.2",
       "picomatch@>=4.0.0 <4.0.4": "4.0.4",
       "brace-expansion@>=1.0.0 <1.1.21": "1.1.21",
@@ -62,7 +63,8 @@
       "baseline-browser-mapping@>=2.0.0 <2.11.0": "2.11.0",
       "@babel/core@<=7.29.0": "7.29.7",
       "flatted@<3.4.2": "3.4.2",
-      "handlebars@>=3.0.0 <4.7.10": "4.7.10"
+      "handlebars@>=3.0.0 <4.7.10": "4.7.10",
+      "@isaacs/nonrecursive-glob-match": "1.0.2"
     },
     "auditConfig": {
       "ignoreGhsas": [
