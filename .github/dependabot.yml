@@ -1,44 +1,33 @@
+# One weekly PR: every ecosystem below joins the `all-dependencies` multi-ecosystem group, and `patterns: ["*"]`
+# takes every update type (major, minor and patch), so updates no longer conflict with each other.
 version: 2
+
+multi-ecosystem-groups:
+  all-dependencies:
+    schedule:
+      interval: weekly
+      day: monday
+
 updates:
   - package-ecosystem: npm
     directory: "/"
-    schedule:
-      interval: weekly
+    multi-ecosystem-group: all-dependencies
+    patterns: ["*"]
     open-pull-requests-limit: 10
     labels:
       - dependencies
     groups:
-      npm-minor-and-patch:
-        applies-to: version-updates
-        patterns:
-          - "*"
-        update-types:
-          - minor
-          - patch
-      npm-security-minor-and-patch:
+      npm-security-updates:
         applies-to: security-updates
         patterns:
           - "*"
-        update-types:
-          - minor
-          - patch
 
   - package-ecosystem: github-actions
     directory: "/"
-    schedule:
-      interval: weekly
+    multi-ecosystem-group: all-dependencies
+    patterns: ["*"]
     groups:
-      github-actions-minor-and-patch:
-        applies-to: version-updates
-        patterns:
-          - "*"
-        update-types:
-          - minor
-          - patch
-      github-actions-security-minor-and-patch:
+      github-actions-security-updates:
         applies-to: security-updates
         patterns:
           - "*"
-        update-types:
-          - minor
-          - patch
